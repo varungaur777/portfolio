@@ -256,10 +256,14 @@ color: var(--text);
 TITAN CLASH HERO
 ========================= */
 
-.hero-project video{
+.hero-project .trailer-wrapper{
 width:100%;
 max-width:900px;
 margin:0 auto;
+border-radius:14px;
+}
+.hero-project video{
+width:100%;
 height:auto;
 border-radius:14px;
 display:block;
@@ -325,7 +329,41 @@ transform:scale(1.02);
 }
 
 /* =========================
-BUTTONS
+TRAILERS & BUTTONS
+========================= */
+
+.trailer-wrapper {
+    position: relative;
+    width: 100%;
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.trailer-wrapper video {
+    width: 100%;
+    display: block;
+}
+
+.overlay-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.9;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+    z-index: 10;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.overlay-btn:hover {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.05);
+}
+
+/* =========================
+FOOTER / BUTTONS
 ========================= */
 
 .btn-group{
