@@ -84,9 +84,16 @@
     </div>
 </section>
 
+<!-- FILTERS -->
+<div class="filters" style="grid-column: span 4; display: flex; gap: 12px; justify-content: center; margin: 10px 0;">
+    <button class="btn filter-btn active" data-filter="all">All Work</button>
+    <button class="btn filter-btn" data-filter="commercial">Commercial</button>
+    <button class="btn filter-btn" data-filter="storytelling">Storytelling</button>
+</div>
+
 <!-- KAAL BHAIRAV REEL -->
 
-<article id="work" class="card hero-project">
+<article id="work" class="card hero-project portfolio-item" data-category="storytelling">
 
     <div class="trailer-wrapper" style="max-width: 320px; margin: 0 auto;">
         <video
@@ -109,7 +116,7 @@
 
 <!-- TITAN CLASH -->
 
-<article class="card hero-project">
+<article class="card hero-project portfolio-item" data-category="storytelling">
 
     <div class="trailer-wrapper">
         <video
@@ -132,7 +139,7 @@
 
 <!-- THE ORDER -->
 
-<div class="card video-large">
+<div class="card video-large portfolio-item" data-category="storytelling">
 
     <div class="trailer-wrapper">
         <video
@@ -155,7 +162,7 @@
 
 <!-- LADAKH -->
 
-<div class="card video-small">
+<div class="card video-small portfolio-item" data-category="storytelling">
 
     <video
         src="videos/ladakh.mp4"
@@ -171,9 +178,73 @@
 
 </div>
 
+<!-- EASTEM -->
+<div class="card portrait-card portfolio-item" data-category="commercial">
+    <div class="portrait-container">
+        <div class="trailer-wrapper">
+            <video
+                class="portrait-video"
+                src="videos/eastem.mp4"
+                autoplay loop muted playsinline>
+            </video>
+            <a class="btn primary overlay-btn" href="#" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                Watch Full Video
+            </a>
+        </div>
+    </div>
+    <h3>Eastem Commercial</h3>
+    <p>Dynamic visual showcase created with AI video workflows.</p>
+</div>
+
+<!-- FOAM WASH -->
+<div class="card portrait-card portfolio-item" data-category="commercial">
+    <div class="portrait-container">
+        <div class="trailer-wrapper">
+            <video
+                class="portrait-video"
+                src="videos/foam-wash.mp4"
+                autoplay loop muted playsinline>
+            </video>
+            <a class="btn primary overlay-btn" href="#" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                Watch Full Video
+            </a>
+        </div>
+    </div>
+    <h3>Foam Wash</h3>
+    <p>Product demonstration featuring high-quality AI-generated visuals.</p>
+</div>
+
+<!-- T-SHIRT -->
+
+<div class="card portrait-card portfolio-item" data-category="commercial">
+
+    <div class="portrait-container">
+        <div class="trailer-wrapper">
+            <video
+                class="portrait-video"
+                src="videos/T-shirt.mp4"
+                autoplay loop muted playsinline>
+            </video>
+            <a class="btn primary overlay-btn" href="#" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                Watch Full Video
+            </a>
+        </div>
+    </div>
+
+    <h3>T-Shirt Campaign</h3>
+
+    <p>
+        Stylized promotional content demonstrating clothing and brand aesthetics.
+    </p>
+
+</div>
+
 <!-- PANDA TEA -->
 
-<div class="card portrait-card">
+<div class="card portrait-card portfolio-item" data-category="commercial">
 
     <div class="portrait-container">
 
@@ -194,21 +265,7 @@
 
 </div>
 
-<div class="poster-stack">
-<!-- INFOGRAPHIC 1 -->
-<article class="card poster-card">
-    <img src="images/railways.png" alt="Indian Railways Infographic">
-    <h3>Indian Railways</h3>
-    <p>Major boost for connectivity and commuter safety in West Bengal.</p>
-</article>
 
-<!-- INFOGRAPHIC 2 -->
-<article class="card poster-card">
-    <img src="images/indus.png" alt="Indus Treaty Infographic">
-    <h3>Indus Treaty Freeze</h3>
-    <p>Strategic overview of the Chenab masterplan and water security.</p>
-</article>
-</div>
 
 
 
