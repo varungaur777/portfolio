@@ -406,6 +406,15 @@ background:#2563eb;
 FILTERS
 ========================= */
 
+.filters {
+    grid-column: span 4;
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin: 10px 0;
+    flex-wrap: wrap;
+}
+
 .filter-btn {
     cursor: pointer;
 }
@@ -451,7 +460,8 @@ TABLET
 .hero-project,
 .portrait-card,
 .poster-stack,
-.contact{
+.contact,
+.filters{
     grid-column:span 2;
 }
 
@@ -484,7 +494,8 @@ body{
 .video-small,
 .portrait-card,
 .poster-stack,
-.contact{
+.contact,
+.filters{
     grid-column:span 1;
 }
 
