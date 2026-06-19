@@ -77,3 +77,33 @@
   80% { transform: translate(2px, -2px) }
   100% { transform: translate(0) }
 }
+
+/* Glass Refraction & Vignette Gradients */
+.bg-radial-glow {
+  background: radial-gradient(circle, rgba(123, 44, 191, 0.45) 0%, rgba(0, 240, 255, 0.18) 55%, transparent 100%);
+}
+
+.bg-radial-vignette {
+  background: radial-gradient(circle at center, transparent 15%, rgba(3, 2, 6, 0.8) 100%);
+}
+
+/* Liquid Blob Morphing Animation */
+@keyframes liquid-slow {
+  0% {
+    transform: translate3d(0, var(--scroll-y, 0px), 0) scale(1) rotate(0deg);
+  }
+  33% {
+    transform: translate3d(40px, calc(var(--scroll-y, 0px) - 60px), 0) scale(1.15) rotate(120deg);
+  }
+  66% {
+    transform: translate3d(-30px, calc(var(--scroll-y, 0px) + 30px), 0) scale(0.9) rotate(240deg);
+  }
+  100% {
+    transform: translate3d(0, var(--scroll-y, 0px), 0) scale(1) rotate(360deg);
+  }
+}
+
+.animate-liquid-slow {
+  animation: liquid-slow 22s infinite ease-in-out alternate;
+}
+

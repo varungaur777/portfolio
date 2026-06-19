@@ -6,6 +6,8 @@ import { ToolMarquee } from "@/components/ToolMarquee";
 import { Play, Mail, Linkedin, Github, MessageCircle } from "lucide-react";
 import WelcomeScreen from "@/components/WelcomeScreen";
 import dynamic from "next/dynamic";
+import GlassCard from "@/components/GlassCard";
+
 
 const Lanyard = dynamic(() => import("@/components/Lanyard"), {
   ssr: false,
@@ -174,104 +176,120 @@ export default function Home() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
         
         {/* HERO CARD */}
-        <motion.section
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="col-span-1 md:col-span-2 lg:col-span-4 glass-effect rounded-3xl p-8 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center min-h-[400px]"
+          className="col-span-1 md:col-span-2 lg:col-span-4"
         >
-          <div className="flex flex-col justify-center">
-            <h1 className="text-5xl md:text-7xl font-extrabold tracking-tighter mb-4 text-gradient glow-effect glitch-text select-none uppercase">
-              Varun Gaur
-            </h1>
-            <h2 className="text-lg md:text-2xl text-primary font-bold tracking-wider mb-6">
-              AI Video Creator & Visual Storyteller
-            </h2>
-            <p className="text-muted-foreground text-base leading-relaxed mb-6">
-              AI Video Creator specializing in cinematic storytelling, generative AI workflows, commercial advertisements, and creative content production. Transforming ideas into engaging visual experiences through AI-powered creative pipelines.
-            </p>
-            <button
-              onClick={scrollToContact}
-              className="w-fit px-6 py-3 bg-primary hover:bg-primary-foreground/10 text-white font-semibold text-sm rounded-xl hover:scale-105 active:scale-95 transition-all duration-300"
-            >
-              Let's Collaborate
-            </button>
-          </div>
-          <div className="w-full h-[350px] lg:h-[450px] relative flex items-center justify-center overflow-hidden rounded-2xl bg-neutral-950/20 border border-white/5 shadow-inner">
-            <Lanyard />
-          </div>
-        </motion.section>
+          <GlassCard className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center min-h-[400px]" tiltEnabled={false}>
+            <div className="flex flex-col justify-center">
+              <h1 className="text-5xl md:text-7xl font-extrabold tracking-tighter mb-4 text-gradient glow-effect glitch-text select-none uppercase">
+                Varun Gaur
+              </h1>
+              <h2 className="text-lg md:text-2xl text-primary font-bold tracking-wider mb-6">
+                AI Video Creator & Visual Storyteller
+              </h2>
+              <p className="text-muted-foreground text-base leading-relaxed mb-6">
+                AI Video Creator specializing in cinematic storytelling, generative AI workflows, commercial advertisements, and creative content production. Transforming ideas into engaging visual experiences through AI-powered creative pipelines.
+              </p>
+              <button
+                onClick={scrollToContact}
+                className="w-fit px-6 py-3 bg-primary hover:bg-primary-foreground/10 text-white font-semibold text-sm rounded-xl hover:scale-105 active:scale-95 transition-all duration-300 shadow-lg shadow-primary/20"
+              >
+                Let's Collaborate
+              </button>
+            </div>
+            <div className="w-full h-[350px] lg:h-[450px] relative flex items-center justify-center overflow-hidden rounded-2xl bg-neutral-950/20 border border-white/5 shadow-inner">
+              <Lanyard />
+            </div>
+          </GlassCard>
+        </motion.div>
 
         {/* TECH STACK CARD */}
-        <motion.section
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="col-span-1 md:col-span-2 lg:col-span-4 glass-effect rounded-3xl p-8"
+          className="col-span-1 md:col-span-2 lg:col-span-4"
         >
-          <h3 className="text-xl font-bold tracking-tight mb-4">The AI & Creative Stack</h3>
-          <p className="text-muted-foreground text-sm mb-6 leading-relaxed">
-            Experienced with modern AI video, image generation, editing, and content creation tools.
-          </p>
-          <div className="flex flex-wrap gap-2">
-            {["Kling AI", "Seedance", "CapCut", "Canva", "ChatGPT", "Gemini", "Claude", "HTML/CSS/JS"].map(
-              (tech) => (
-                <span
-                  key={tech}
-                  className="px-4 py-2 text-xs font-medium text-white/70 border border-white/5 bg-white/5 rounded-full backdrop-blur-sm"
-                >
-                  {tech}
-                </span>
-              )
-            )}
-          </div>
-        </motion.section>
+          <GlassCard className="p-8">
+            <h3 className="text-xl font-bold tracking-tight mb-4">The AI & Creative Stack</h3>
+            <p className="text-muted-foreground text-sm mb-6 leading-relaxed">
+              Experienced with modern AI video, image generation, editing, and content creation tools.
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {["Kling AI", "Seedance", "CapCut", "Canva", "ChatGPT", "Gemini", "Claude", "HTML/CSS/JS"].map(
+                (tech) => (
+                  <span
+                    key={tech}
+                    className="px-4 py-2 text-xs font-medium text-white/70 border border-white/5 bg-white/5 rounded-full backdrop-blur-sm"
+                  >
+                    {tech}
+                  </span>
+                )
+              )}
+            </div>
+          </GlassCard>
+        </motion.div>
 
         {/* SNAPSHOT CARD */}
-        <motion.section
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="col-span-1 md:col-span-2 lg:col-span-4 glass-effect rounded-3xl p-8"
+          className="col-span-1 md:col-span-2 lg:col-span-4"
         >
-          <h3 className="text-xl font-bold tracking-tight mb-6">Portfolio Snapshot</h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {[
-              { val: "50+", desc: "AI Visuals" },
-              { val: "10+", desc: "Video Projects" },
-              { val: "3", desc: "Commercial Concepts" },
-              { val: "AI", desc: "Storytelling" },
-            ].map((stat, i) => (
-              <div key={i} className="text-center p-4 border border-white/5 bg-white/5 rounded-2xl">
-                <div className="text-3xl font-black text-primary mb-1 glow-effect">{stat.val}</div>
-                <div className="text-xs text-muted-foreground font-medium uppercase tracking-wider">{stat.desc}</div>
-              </div>
-            ))}
-          </div>
-        </motion.section>
+          <GlassCard className="p-8">
+            <h3 className="text-xl font-bold tracking-tight mb-6">Portfolio Snapshot</h3>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {[
+                { val: "50+", desc: "AI Visuals" },
+                { val: "10+", desc: "Video Projects" },
+                { val: "3", desc: "Commercial Concepts" },
+                { val: "AI", desc: "Storytelling" },
+              ].map((stat, i) => (
+                <div key={i} className="text-center p-4 border border-white/5 bg-white/5 rounded-2xl">
+                  <div className="text-3xl font-black text-primary mb-1 glow-effect">{stat.val}</div>
+                  <div className="text-xs text-muted-foreground font-medium uppercase tracking-wider">{stat.desc}</div>
+                </div>
+              ))}
+            </div>
+          </GlassCard>
+        </motion.div>
 
         {/* FILTER BAR */}
-        <div className="col-span-1 md:col-span-2 lg:col-span-4 flex justify-center gap-3 my-4">
-          {[
-            { id: "all", label: "All Work" },
-            { id: "commercial", label: "Commercial" },
-            { id: "storytelling", label: "Storytelling" },
-          ].map((cat) => (
-            <button
-              key={cat.id}
-              onClick={() => setActiveFilter(cat.id)}
-              className={`px-5 py-2.5 rounded-xl font-semibold text-sm border transition-all duration-300 ${
-                activeFilter === cat.id
-                  ? "bg-primary border-primary text-white"
-                  : "bg-transparent border-white/10 text-muted-foreground hover:border-white/20 hover:text-white"
-              }`}
-            >
-              {cat.label}
-            </button>
-          ))}
+        <div className="col-span-1 md:col-span-2 lg:col-span-4 flex justify-center my-6">
+          <div className="flex p-1.5 bg-white/[0.04] backdrop-blur-[20px] border border-white/[0.08] rounded-2xl relative shadow-lg shadow-black/20">
+            {[
+              { id: "all", label: "All Work" },
+              { id: "commercial", label: "Commercial" },
+              { id: "storytelling", label: "Storytelling" },
+            ].map((cat) => {
+              const isActive = activeFilter === cat.id;
+              return (
+                <button
+                  key={cat.id}
+                  onClick={() => setActiveFilter(cat.id)}
+                  className={`px-6 py-2.5 rounded-xl font-semibold text-sm relative transition-colors duration-300 z-10 whitespace-nowrap ${
+                    isActive ? "text-white" : "text-white/60 hover:text-white"
+                  }`}
+                >
+                  {isActive && (
+                    <motion.div
+                      layoutId="activeFilterBg"
+                      className="absolute inset-0 bg-primary rounded-xl -z-10 shadow-lg shadow-primary/20"
+                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                    />
+                  )}
+                  {cat.label}
+                </button>
+              );
+            })}
+          </div>
         </div>
 
         {/* PROJECT ITEMS */}
@@ -285,121 +303,125 @@ export default function Home() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.4 }}
-                className={`glass-effect rounded-3xl p-6 flex flex-col justify-between ${
+                className={`${
                   project.type === "hero"
                     ? "col-span-1 md:col-span-2 lg:col-span-4"
                     : "col-span-1 md:col-span-1 lg:col-span-2"
                 }`}
               >
-                {/* Media Section */}
-                <div
-                  className={`relative overflow-hidden rounded-2xl bg-neutral-950 mb-6 group/vid w-full ${
-                    project.type === "portrait" ? "aspect-[9/16]" : "aspect-video"
-                  }`}
-                  style={project.centered ? { maxWidth: "320px", margin: "0 auto" } : {}}
-                >
-                  <video
-                    src={project.src}
-                    className="w-full h-full object-cover rounded-2xl"
-                    autoPlay={!project.inlineControls}
-                    loop={!project.inlineControls}
-                    muted={!project.inlineControls}
-                    playsInline
-                    controls={project.inlineControls}
-                    preload="metadata"
-                  />
+                <GlassCard className="h-full p-6 flex flex-col justify-between" tiltEnabled={project.type !== "hero"}>
+                  {/* Media Section */}
+                  <div
+                    className={`relative overflow-hidden rounded-2xl bg-neutral-950 mb-6 group/vid w-full ${
+                      project.type === "portrait" ? "aspect-[9/16]" : "aspect-video"
+                    }`}
+                    style={project.centered ? { maxWidth: "320px", margin: "0 auto" } : {}}
+                  >
+                    <video
+                      src={project.src}
+                      className="w-full h-full object-cover rounded-2xl"
+                      autoPlay={!project.inlineControls}
+                      loop={!project.inlineControls}
+                      muted={!project.inlineControls}
+                      playsInline
+                      controls={project.inlineControls}
+                      preload="metadata"
+                    />
 
-                  {/* Overlay Drive button for loops */}
-                  {project.driveLink && (
-                    <a
-                      href={project.driveLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-primary/90 hover:bg-primary text-white font-semibold py-2.5 px-5 rounded-full flex items-center gap-2 border border-primary/20 shadow-lg scale-90 md:scale-100 opacity-0 group-hover/vid:opacity-100 group-hover/vid:scale-105 active:scale-95 transition-all duration-300 backdrop-blur-sm z-10 whitespace-nowrap"
-                    >
-                      <Play className="w-4 h-4 fill-white" />
-                      Watch Full Video
-                    </a>
-                  )}
-                </div>
+                    {/* Overlay Drive button for loops */}
+                    {project.driveLink && (
+                      <a
+                        href={project.driveLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-primary/90 hover:bg-primary text-white font-semibold py-2.5 px-5 rounded-full flex items-center gap-2 border border-primary/20 shadow-lg scale-90 md:scale-100 opacity-0 group-hover/vid:opacity-100 group-hover/vid:scale-105 active:scale-95 transition-all duration-300 backdrop-blur-sm z-10 whitespace-nowrap"
+                      >
+                        <Play className="w-4 h-4 fill-white" />
+                        Watch Full Video
+                      </a>
+                    )}
+                  </div>
 
-                {/* Title & Desc */}
-                <div className="flex-grow flex flex-col justify-between">
-                  <div>
-                    <h3 className="text-xl font-bold tracking-tight mb-2 text-white/90">
-                      {project.title}
-                    </h3>
-                    <p className="text-muted-foreground text-sm leading-relaxed mb-4">
-                      {project.description}
-                    </p>
+                  {/* Title & Desc */}
+                  <div className="flex-grow flex flex-col justify-between">
+                    <div>
+                      <h3 className="text-xl font-bold tracking-tight mb-2 text-white/90">
+                        {project.title}
+                      </h3>
+                      <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+                        {project.description}
+                      </p>
+                    </div>
+                    <div>
+                      <span className="inline-block px-3 py-1 text-[10px] font-bold tracking-widest uppercase text-primary border border-primary/20 bg-primary/5 rounded-full">
+                        {project.category}
+                      </span>
+                    </div>
                   </div>
-                  <div>
-                    <span className="inline-block px-3 py-1 text-[10px] font-bold tracking-widest uppercase text-primary border border-primary/20 bg-primary/5 rounded-full">
-                      {project.category}
-                    </span>
-                  </div>
-                </div>
+                </GlassCard>
               </motion.article>
             ))}
           </AnimatePresence>
         </div>
 
         {/* CONTACT FOOTER */}
-        <motion.footer
-          id="contact"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="col-span-1 md:col-span-2 lg:col-span-4 glass-effect rounded-3xl p-8 text-center"
-        >
-          <h2 className="text-3xl font-extrabold tracking-tight mb-4">
-            Available for Creative Collaborations
-          </h2>
-          <p className="text-muted-foreground text-base max-w-2xl mx-auto leading-relaxed mb-8">
-            Specializing in AI video production, brand storytelling, visual campaigns, social media content, and creative concept development.
-          </p>
+        <div id="contact" className="col-span-1 md:col-span-2 lg:col-span-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <GlassCard className="p-8 text-center" tiltEnabled={false}>
+              <h2 className="text-3xl font-extrabold tracking-tight mb-4">
+                Available for Creative Collaborations
+              </h2>
+              <p className="text-muted-foreground text-base max-w-2xl mx-auto leading-relaxed mb-8">
+                Specializing in AI video production, brand storytelling, visual campaigns, social media content, and creative concept development.
+              </p>
 
-          <div className="flex flex-wrap justify-center gap-4">
-            <a
-              href="mailto:vgaur2003@gmail.com"
-              className="flex items-center gap-2 px-5 py-3 bg-primary hover:bg-primary/90 text-white font-semibold text-sm rounded-xl hover:scale-105 active:scale-95 transition-all duration-300"
-            >
-              <Mail className="w-4 h-4" />
-              Email Me
-            </a>
+              <div className="flex flex-wrap justify-center gap-4">
+                <a
+                  href="mailto:vgaur2003@gmail.com"
+                  className="flex items-center gap-2 px-5 py-3 bg-primary hover:bg-primary/90 text-white font-semibold text-sm rounded-xl hover:scale-105 active:scale-95 transition-all duration-300"
+                >
+                  <Mail className="w-4 h-4" />
+                  Email Me
+                </a>
 
-            <a
-              href="https://www.linkedin.com/in/varungaur777/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-5 py-3 border border-white/10 hover:border-white/20 bg-white/5 hover:bg-white/10 text-white font-semibold text-sm rounded-xl hover:scale-105 active:scale-95 transition-all duration-300"
-            >
-              <Linkedin className="w-4 h-4" />
-              LinkedIn
-            </a>
+                <a
+                  href="https://www.linkedin.com/in/varungaur777/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-5 py-3 border border-white/10 hover:border-white/20 bg-white/5 hover:bg-white/10 text-white font-semibold text-sm rounded-xl hover:scale-105 active:scale-95 transition-all duration-300"
+                >
+                  <Linkedin className="w-4 h-4" />
+                  LinkedIn
+                </a>
 
-            <a
-              href="https://github.com/varungaur777"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-5 py-3 border border-white/10 hover:border-white/20 bg-white/5 hover:bg-white/10 text-white font-semibold text-sm rounded-xl hover:scale-105 active:scale-95 transition-all duration-300"
-            >
-              <Github className="w-4 h-4" />
-              GitHub
-            </a>
+                <a
+                  href="https://github.com/varungaur777"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-5 py-3 border border-white/10 hover:border-white/20 bg-white/5 hover:bg-white/10 text-white font-semibold text-sm rounded-xl hover:scale-105 active:scale-95 transition-all duration-300"
+                >
+                  <Github className="w-4 h-4" />
+                  GitHub
+                </a>
 
-            <a
-              href="https://wa.me/919899380254"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-5 py-3 border border-white/10 hover:border-white/20 bg-white/5 hover:bg-white/10 text-white font-semibold text-sm rounded-xl hover:scale-105 active:scale-95 transition-all duration-300"
-            >
-              <MessageCircle className="w-4 h-4" />
-              WhatsApp
-            </a>
-          </div>
-        </motion.footer>
+                <a
+                  href="https://wa.me/919899380254"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-5 py-3 border border-white/10 hover:border-white/20 bg-white/5 hover:bg-white/10 text-white font-semibold text-sm rounded-xl hover:scale-105 active:scale-95 transition-all duration-300"
+                >
+                  <MessageCircle className="w-4 h-4" />
+                  WhatsApp
+                </a>
+              </div>
+            </GlassCard>
+          </motion.div>
+        </div>
 
       </div>
 
