@@ -4,6 +4,17 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ToolMarquee } from "@/components/ToolMarquee";
 import { Play, Mail, Linkedin, Github, MessageCircle } from "lucide-react";
+import WelcomeScreen from "@/components/WelcomeScreen";
+import dynamic from "next/dynamic";
+
+const Lanyard = dynamic(() => import("@/components/Lanyard"), {
+  ssr: false,
+  loading: () => (
+    <div className="w-full h-full flex items-center justify-center bg-neutral-950/20 text-muted-foreground text-xs animate-pulse">
+      Loading 3D Experience...
+    </div>
+  ),
+});
 
 // Project Type Definition
 interface Project {
@@ -126,14 +137,12 @@ export default function Home() {
       <AnimatePresence>
         {isLoading && (
           <motion.div
-            initial={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.5 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-[#050505]"
+            initial={{ y: 0 }}
+            exit={{ y: "-100%" }}
+            transition={{ duration: 1.2, ease: [0.76, 0, 0.24, 1] }}
+            className="fixed inset-0 z-50 overflow-hidden"
           >
-            <div className="text-4xl font-black text-primary tracking-widest animate-pulse glow-effect select-none">
-              VG
-            </div>
+            <WelcomeScreen />
           </motion.div>
         )}
       </AnimatePresence>
@@ -170,23 +179,28 @@ export default function Home() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="col-span-1 md:col-span-2 lg:col-span-4 glass-effect rounded-3xl p-8 flex flex-col justify-center min-h-[300px]"
+          className="col-span-1 md:col-span-2 lg:col-span-4 glass-effect rounded-3xl p-8 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center min-h-[400px]"
         >
-          <h1 className="text-5xl md:text-7xl font-extrabold tracking-tighter mb-4 text-gradient glow-effect glitch-text select-none uppercase">
-            Varun Gaur
-          </h1>
-          <h2 className="text-lg md:text-2xl text-primary font-bold tracking-wider mb-6">
-            AI Video Creator & Visual Storyteller
-          </h2>
-          <p className="text-muted-foreground text-base max-w-3xl leading-relaxed mb-6">
-            AI Video Creator specializing in cinematic storytelling, generative AI workflows, commercial advertisements, and creative content production. Transforming ideas into engaging visual experiences through AI-powered creative pipelines.
-          </p>
-          <button
-            onClick={scrollToContact}
-            className="w-fit px-6 py-3 bg-primary hover:bg-primary-foreground/10 text-white font-semibold text-sm rounded-xl hover:scale-105 active:scale-95 transition-all duration-300"
-          >
-            Let's Collaborate
-          </button>
+          <div className="flex flex-col justify-center">
+            <h1 className="text-5xl md:text-7xl font-extrabold tracking-tighter mb-4 text-gradient glow-effect glitch-text select-none uppercase">
+              Varun Gaur
+            </h1>
+            <h2 className="text-lg md:text-2xl text-primary font-bold tracking-wider mb-6">
+              AI Video Creator & Visual Storyteller
+            </h2>
+            <p className="text-muted-foreground text-base leading-relaxed mb-6">
+              AI Video Creator specializing in cinematic storytelling, generative AI workflows, commercial advertisements, and creative content production. Transforming ideas into engaging visual experiences through AI-powered creative pipelines.
+            </p>
+            <button
+              onClick={scrollToContact}
+              className="w-fit px-6 py-3 bg-primary hover:bg-primary-foreground/10 text-white font-semibold text-sm rounded-xl hover:scale-105 active:scale-95 transition-all duration-300"
+            >
+              Let's Collaborate
+            </button>
+          </div>
+          <div className="w-full h-[350px] lg:h-[450px] relative flex items-center justify-center overflow-hidden rounded-2xl bg-neutral-950/20 border border-white/5 shadow-inner">
+            <Lanyard />
+          </div>
         </motion.section>
 
         {/* TECH STACK CARD */}
