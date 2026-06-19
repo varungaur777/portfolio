@@ -412,14 +412,16 @@ export default function Home() {
               >
                 {/* Media Section */}
                 <div
-                  className={`relative overflow-hidden rounded-2xl bg-neutral-950 mb-6 group/vid w-full ${
-                    project.type === "portrait" ? "aspect-[9/16]" : "aspect-video"
-                  }`}
-                  style={project.centered ? { maxWidth: "320px", margin: "0 auto" } : {}}
+                  className="relative overflow-hidden rounded-2xl bg-neutral-950 mb-6 group/vid w-full"
+                  style={
+                    project.type === "portrait" || project.centered
+                      ? { maxWidth: "320px", margin: "0 auto" }
+                      : {}
+                  }
                 >
                   <video
                     src={project.src}
-                    className="w-full h-full object-cover rounded-2xl"
+                    className="w-full h-auto block rounded-2xl"
                     autoPlay={!project.inlineControls}
                     loop={!project.inlineControls}
                     muted={!project.inlineControls}
