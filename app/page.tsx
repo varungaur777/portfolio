@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ToolMarquee } from "@/components/ToolMarquee";
-import { Play, Mail, Linkedin, Github, MessageCircle } from "lucide-react";
+import { Play, Mail, Linkedin, Github, MessageCircle, GraduationCap, BookOpen } from "lucide-react";
 
 // Project Type Definition
 interface Project {
@@ -176,10 +176,10 @@ export default function Home() {
             Varun Gaur
           </h1>
           <h2 className="text-lg md:text-2xl text-primary font-bold tracking-wider mb-6">
-            AI Video Creator & Visual Storyteller
+            AI Content Creator & Visual Storyteller
           </h2>
           <p className="text-muted-foreground text-base max-w-3xl leading-relaxed mb-6">
-            AI Video Creator specializing in cinematic storytelling, generative AI workflows, commercial advertisements, and creative content production. Transforming ideas into engaging visual experiences through AI-powered creative pipelines.
+            AI-driven content creator with 1+ year of experience across freelance and part-time roles, producing 10+ video projects and 50+ AI visuals spanning cinematic reels, brand commercials, product demos, and motion graphics. Proficient in end-to-end video production — from AI generation and clip assembly to voiceover integration, music syncing, and final delivery. Currently pursuing a BCA with a technical foundation in web development.
           </p>
           <button
             onClick={scrollToContact}
@@ -189,29 +189,162 @@ export default function Home() {
           </button>
         </motion.section>
 
-        {/* TECH STACK CARD */}
+        {/* PROFESSIONAL EXPERIENCE CARD */}
         <motion.section
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="col-span-1 md:col-span-2 lg:col-span-4 glass-effect rounded-3xl p-8"
+          className="col-span-1 md:col-span-1 lg:col-span-2 glass-effect rounded-3xl p-8 flex flex-col justify-between"
         >
-          <h3 className="text-xl font-bold tracking-tight mb-4">The AI & Creative Stack</h3>
-          <p className="text-muted-foreground text-sm mb-6 leading-relaxed">
-            Experienced with modern AI video, image generation, editing, and content creation tools.
-          </p>
-          <div className="flex flex-wrap gap-2">
-            {["Kling AI", "Seedance", "CapCut", "Canva", "ChatGPT", "Gemini", "Claude", "HTML/CSS/JS"].map(
-              (tech) => (
-                <span
-                  key={tech}
-                  className="px-4 py-2 text-xs font-medium text-white/70 border border-white/5 bg-white/5 rounded-full backdrop-blur-sm"
-                >
-                  {tech}
-                </span>
-              )
-            )}
+          <div>
+            <h3 className="text-xl font-bold tracking-tight mb-6 text-primary glow-effect">Professional Experience</h3>
+            <div className="space-y-6">
+              
+              <div>
+                <div className="flex justify-between items-start flex-wrap gap-2">
+                  <h4 className="font-semibold text-white text-sm">AI Graphics & Research Analyst</h4>
+                  <span className="text-[10px] font-bold text-muted-foreground uppercase">Nov 2025 – Present</span>
+                </div>
+                <p className="text-xs text-primary font-semibold mt-0.5">ISN Report (isn.report) • Part-Time</p>
+                <ul className="list-disc list-inside text-muted-foreground text-xs mt-2 space-y-1">
+                  <li>Produced AI-generated graphics and visual assets for a news & geopolitical platform.</li>
+                  <li>Conducted research & analysis to develop compelling explainer content on strategic affairs.</li>
+                  <li>Maintained consistent visual identity and brand coherence across all content output.</li>
+                </ul>
+              </div>
+
+              <div className="border-t border-white/5 pt-4">
+                <div className="flex justify-between items-start flex-wrap gap-2">
+                  <h4 className="font-semibold text-white text-sm">AI Graphic Designer</h4>
+                  <span className="text-[10px] font-bold text-muted-foreground uppercase">May 2025 – Jan 2026</span>
+                </div>
+                <p className="text-xs text-primary font-semibold mt-0.5">RK Divine Creation • Part-Time</p>
+                <ul className="list-disc list-inside text-muted-foreground text-xs mt-2 space-y-1">
+                  <li>Designed AI-generated posters, promotional creatives, and social graphics.</li>
+                  <li>Utilized Midjourney and image generation tools to deliver high-quality visuals for campaigns.</li>
+                  <li>Delivered consistent creative output across multiple promotional and marketing briefs.</li>
+                </ul>
+              </div>
+
+              <div className="border-t border-white/5 pt-4">
+                <div className="flex justify-between items-start flex-wrap gap-2">
+                  <h4 className="font-semibold text-white text-sm">AI Content Creator & Visual Designer</h4>
+                  <span className="text-[10px] font-bold text-muted-foreground uppercase">Nov 2025 – Present</span>
+                </div>
+                <p className="text-xs text-primary font-semibold mt-0.5">Freelance</p>
+                <ul className="list-disc list-inside text-muted-foreground text-xs mt-2 space-y-1">
+                  <li>Produced 10+ AI video projects across 3 concepts, totaling 50+ AI-generated visuals.</li>
+                  <li>Built end-to-end production pipelines using Kling AI, Runway, Luma, HeyGen, and Seedance.</li>
+                  <li>Ensured character consistency and brand continuity across multi-scene commercial ads.</li>
+                </ul>
+              </div>
+
+            </div>
+          </div>
+        </motion.section>
+
+        {/* SKILLS CARD */}
+        <motion.section
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="col-span-1 md:col-span-1 lg:col-span-2 glass-effect rounded-3xl p-8 flex flex-col justify-between"
+        >
+          <div>
+            <h3 className="text-xl font-bold tracking-tight mb-6 text-primary glow-effect">AI & Creative Skills</h3>
+            <div className="space-y-4">
+              
+              <div>
+                <span className="text-xs font-semibold text-white uppercase tracking-wider block mb-2">Content & Creative</span>
+                <div className="flex flex-wrap gap-1.5">
+                  {[
+                    "AI Video Production", "Visual Storytelling", "Storyboarding", "Creative Direction", 
+                    "Character Consistency", "Motion Graphics", "Prompt Engineering", "Short-Form Video", "Content Strategy"
+                  ].map((s) => (
+                    <span key={s} className="px-2.5 py-1 text-[10px] font-medium text-white/70 border border-white/5 bg-white/5 rounded-md">
+                      {s}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <span className="text-xs font-semibold text-white uppercase tracking-wider block mb-2">AI Generation Tools</span>
+                <div className="flex flex-wrap gap-1.5">
+                  {[
+                    "Kling AI", "Runway", "Midjourney", "Luma Dream Machine", "HeyGen", 
+                    "Seedance", "Higgsfield", "Claude", "ChatGPT", "Gemini", "Canva"
+                  ].map((s) => (
+                    <span key={s} className="px-2.5 py-1 text-[10px] font-medium text-white/70 border border-white/5 bg-white/5 rounded-md">
+                      {s}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <span className="text-xs font-semibold text-white uppercase tracking-wider block mb-2">Editing & Tech</span>
+                <div className="flex flex-wrap gap-1.5">
+                  {[
+                    "CapCut", "Adobe Express", "HTML5", "CSS3", "JavaScript", 
+                    "Git & GitHub", "Clip Merging", "Music Syncing", "Voiceover Integration"
+                  ].map((s) => (
+                    <span key={s} className="px-2.5 py-1 text-[10px] font-medium text-white/70 border border-white/5 bg-white/5 rounded-md">
+                      {s}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </motion.section>
+
+        {/* EDUCATION CARD */}
+        <motion.section
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="col-span-1 md:col-span-1 lg:col-span-2 glass-effect rounded-3xl p-8 flex flex-col justify-between"
+        >
+          <div>
+            <h3 className="text-xl font-bold tracking-tight mb-6 text-primary glow-effect">Education</h3>
+            <div className="space-y-4">
+              
+              <div className="flex items-start gap-4">
+                <div className="p-3 bg-primary/10 rounded-xl border border-primary/20 text-primary mt-1">
+                  <GraduationCap className="w-5 h-5" />
+                </div>
+                <div>
+                  <h4 className="font-semibold text-white text-sm">Bachelor of Computer Applications (BCA)</h4>
+                  <p className="text-xs text-muted-foreground">2023 – 2026</p>
+                  <p className="text-xs text-primary font-semibold mt-0.5">Global Institute of Technology & Management, Gurugram</p>
+                </div>
+              </div>
+
+              <div className="border-t border-white/5 pt-4 flex items-start gap-4">
+                <div className="p-3 bg-primary/10 rounded-xl border border-primary/20 text-primary mt-1">
+                  <BookOpen className="w-5 h-5" />
+                </div>
+                <div>
+                  <h4 className="font-semibold text-white text-sm">Class XII & Class X</h4>
+                  <p className="text-xs text-muted-foreground">Graduated 2022 / 2020</p>
+                  <p className="text-xs text-primary font-semibold mt-0.5">Aadarsh Jain / B.V.M Public School</p>
+                </div>
+              </div>
+
+              <div className="border-t border-white/5 pt-4">
+                <span className="text-xs font-semibold text-white uppercase tracking-wider block mb-2">Languages</span>
+                <div className="flex gap-2">
+                  <span className="px-3 py-1 text-xs font-medium text-white/70 border border-white/5 bg-white/5 rounded-full">English</span>
+                  <span className="px-3 py-1 text-xs font-medium text-white/70 border border-white/5 bg-white/5 rounded-full">Hindi</span>
+                </div>
+              </div>
+
+            </div>
           </div>
         </motion.section>
 
@@ -220,11 +353,11 @@ export default function Home() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="col-span-1 md:col-span-2 lg:col-span-4 glass-effect rounded-3xl p-8"
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="col-span-1 md:col-span-1 lg:col-span-2 glass-effect rounded-3xl p-8"
         >
           <h3 className="text-xl font-bold tracking-tight mb-6">Portfolio Snapshot</h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 gap-4">
             {[
               { val: "50+", desc: "AI Visuals" },
               { val: "10+", desc: "Video Projects" },
@@ -233,7 +366,7 @@ export default function Home() {
             ].map((stat, i) => (
               <div key={i} className="text-center p-4 border border-white/5 bg-white/5 rounded-2xl">
                 <div className="text-3xl font-black text-primary mb-1 glow-effect">{stat.val}</div>
-                <div className="text-xs text-muted-foreground font-medium uppercase tracking-wider">{stat.desc}</div>
+                <div className="text-[10px] text-muted-foreground font-semibold uppercase tracking-wider">{stat.desc}</div>
               </div>
             ))}
           </div>
