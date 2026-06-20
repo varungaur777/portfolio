@@ -3,12 +3,16 @@
 import { useState, useEffect } from 'react';
 import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
 import { Sun, Moon, Mail } from 'lucide-react';
+import { useTheme } from 'next-themes';
 
 export default function FloatingNav() {
   const { scrollY } = useScroll();
   const [hidden, setHidden] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(true);
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
   const [activeSection, setActiveSection] = useState('work');
+
+  useEffect(() => setMounted(true), []);
 
   // Track scroll direction to hide/reveal nav bar
   useMotionValueEvent(scrollY, 'change', (latest) => {
@@ -20,30 +24,8 @@ export default function FloatingNav() {
     }
   });
 
-  // Dark/Light Mode toggle helper
-  useEffect(() => {
-    // Read theme from localStorage or default to dark
-    const savedTheme = localStorage.getItem('theme');
-    const isLight = savedTheme === 'light';
-    setIsDarkMode(!isLight);
-    
-    if (isLight) {
-      document.documentElement.classList.remove('dark');
-    } else {
-      document.documentElement.classList.add('dark');
-    }
-  }, []);
-
   const toggleTheme = () => {
-    const nextDark = !isDarkMode;
-    setIsDarkMode(nextDark);
-    if (nextDark) {
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-    }
+    setTheme(theme === 'dark' ? 'light' : 'dark');
   };
 
   // Scroll to section helper
@@ -149,7 +131,7 @@ export default function FloatingNav() {
             className="flex items-center justify-center p-2 rounded-full border border-obsidian-500/15 dark:border-white/10 bg-obsidian-500/5 dark:bg-white/5 text-obsidian dark:text-white hover:text-cyanGlow dark:hover:text-cyanGlow hover:border-cyanGlow dark:hover:border-cyanGlow hover:scale-105 transition-all duration-300"
             title="Toggle theme"
           >
-            {isDarkMode ? <Sun size={15} /> : <Moon size={15} />}
+            {mounted ? (theme === 'dark' ? <Sun size={15} /> : <Moon size={15} />) : <span className="w-[15px] h-[15px]" />}
           </button>
         </div>
 
