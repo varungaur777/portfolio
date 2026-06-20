@@ -11,6 +11,7 @@ import ProjectCard from '@/components/ProjectCard';
 const Preloader = dynamic(() => import('@/components/Preloader'), { ssr: false });
 const MasonryGallery = dynamic(() => import('@/components/MasonryGallery'), { ssr: false });
 const Lightbox = dynamic(() => import('@/components/Lightbox'), { ssr: false });
+const WebGLBackground = dynamic(() => import('@/components/WebGLBackground'), { ssr: false });
 
 // Animated statistics counter widget
 function StatsCounter({ value, label }: { value: string; label: string }) {
@@ -107,6 +108,9 @@ export default function Home() {
     <>
       {/* Preloading Screen */}
       <Preloader onComplete={() => setLoaded(true)} />
+
+      {/* WebGL background loaded dynamically only on the homepage */}
+      <WebGLBackground />
 
       {/* Main content displays stagger-reveal once preload resolves */}
       <AnimatePresence>

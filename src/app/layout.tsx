@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
-import dynamic from "next/dynamic";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
 import FloatingNav from "@/components/FloatingNav";
@@ -11,10 +10,6 @@ const outfit = Outfit({
   weight: ["300", "400", "500", "600", "800"],
   variable: "--font-outfit",
 });
-
-// Dynamic imports to optimize initial bundle sizes and prevent SSR hydration warnings
-const CustomCursor = dynamic(() => import("@/components/CustomCursor"), { ssr: false });
-const WebGLBackground = dynamic(() => import("@/components/WebGLBackground"), { ssr: false });
 
 export const metadata: Metadata = {
   title: "Varun Gaur | AI Video Creator & Visual Storyteller",
@@ -38,8 +33,6 @@ export default function RootLayout({
       <body className={`${outfit.variable} font-sans bg-obsidian text-foreground antialiased`}>
         {/* Global Cinematic Elements */}
         <div className="noise-overlay" />
-        <WebGLBackground />
-        <CustomCursor />
         
         <SmoothScroll>
           <FloatingNav />

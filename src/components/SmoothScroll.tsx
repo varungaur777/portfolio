@@ -12,8 +12,8 @@ export default function SmoothScroll({ children }: SmoothScrollProps) {
     <ReactLenis
       root
       options={{
-        lerp: 0.05, // Cinematic slow smoothing
-        duration: 1.5,
+        lerp: 0.1, // Faster, snappier scroll responsiveness
+        duration: 0.8,
       }}
     >
       {children}
