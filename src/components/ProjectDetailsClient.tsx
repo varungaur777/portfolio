@@ -76,7 +76,11 @@ export default function ProjectDetailsClient({ project }: ProjectDetailsClientPr
       {/* ==========================================
          HERO VIDEO HEADER
          ========================================== */}
-      <section className="relative w-full aspect-video rounded-3xl overflow-hidden border border-obsidian-500/10 dark:border-white/5 bg-black shadow-2xl shadow-cyanGlow/5">
+      <section className={
+        project.aspect === 'portrait'
+          ? "relative w-full max-w-[360px] aspect-[9/16] mx-auto rounded-3xl overflow-hidden border border-obsidian-500/10 dark:border-white/5 bg-black shadow-2xl shadow-cyanGlow/5"
+          : "relative w-full aspect-video rounded-3xl overflow-hidden border border-obsidian-500/10 dark:border-white/5 bg-black shadow-2xl shadow-cyanGlow/5"
+      }>
         <video
           src={`/${project.fullVideoSrc}`}
           controls

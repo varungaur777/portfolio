@@ -92,14 +92,14 @@ export const projects: Project[] = [
   },
   {
     slug: 'the-order',
-    title: 'Guby Rogers Academy',
-    subtitle: 'Brand Film & Identity',
-    category: 'commercial',
+    title: 'The Order — Cinematic Brand Film',
+    subtitle: 'Cinematic Brand Film',
+    category: 'storytelling',
     description: 'A cinematic brand campaign detailing the path from local logistics to global reach. Demonstrates character consistency, dynamic styling, and cinematic brand narratives.',
     videoSrc: 'videos/the-order-trailer.mp4',
     fullVideoSrc: 'videos/the-order.mp4',
     driveLink: 'https://drive.google.com/file/d/1QdHfLfOM9P27specZkviMKcz7zdpgq8T/view?usp=sharing',
-    tags: ['Brand Strategy', 'Commercial', 'ChatGPT', 'AI Visuals'],
+    tags: ['Brand Strategy', 'Storytelling', 'ChatGPT', 'AI Visuals'],
     aspect: 'landscape',
     details: {
       role: 'Creative Director & AI Specialist',
