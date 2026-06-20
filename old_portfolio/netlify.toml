@@ -1,7 +1,0 @@
-[build]
-  command = ""
-  publish = "public"
-
-[build.environment]
-  NETLIFY_NEXT_PLUGIN_SKIP = "true"
-  NETLIFY_SKIP_NEXT_ON_POSTBUILD = "true"
