@@ -56,8 +56,8 @@ export const projects: Project[] = [
         }
       ],
       storyboard: [
-        'images/indus.png',
-        'images/nasa.png',
+        'images/poster1.png',
+        'images/poster2.jpg',
         'images/railways.png'
       ]
     }
@@ -92,7 +92,7 @@ export const projects: Project[] = [
       ],
       storyboard: [
         'images/poster1.png',
-        'images/poster2.png'
+        'images/poster2.jpg'
       ]
     }
   },
@@ -125,8 +125,8 @@ export const projects: Project[] = [
         }
       ],
       storyboard: [
-        'images/poster2.png',
-        'images/indus.png'
+        'images/poster2.jpg',
+        'images/poster3.jpg'
       ]
     }
   },
@@ -153,7 +153,7 @@ export const projects: Project[] = [
         }
       ],
       storyboard: [
-        'images/naetc.png',
+        'images/poster4.jpg',
         'images/poster1.png'
       ]
     }
@@ -182,8 +182,8 @@ export const projects: Project[] = [
         }
       ],
       storyboard: [
-        'images/indus.png',
-        'images/nasa.png'
+        'images/poster5.jpg',
+        'images/poster6.jpg'
       ]
     }
   },
@@ -211,8 +211,8 @@ export const projects: Project[] = [
         }
       ],
       storyboard: [
-        'images/naetc.png',
-        'images/poster2.png'
+        'images/poster7.jpg',
+        'images/poster8.jpg'
       ]
     }
   },
@@ -241,7 +241,7 @@ export const projects: Project[] = [
       ],
       storyboard: [
         'images/railways.png',
-        'images/indus.png'
+        'images/poster9.jpg'
       ]
     }
   },
@@ -268,8 +268,8 @@ export const projects: Project[] = [
         }
       ],
       storyboard: [
-        'images/poster1.png',
-        'images/naetc.png'
+        'images/poster10.jpg',
+        'images/poster11.jpg'
       ]
     }
   }
@@ -283,10 +283,17 @@ export interface PosterArt {
 }
 
 export const posters: PosterArt[] = [
-  { id: '1', title: 'Indus Visual Concept', category: 'concept', imageSrc: '/images/indus.png' },
-  { id: '2', title: 'NASA Space Agency Concept', category: 'futurism', imageSrc: '/images/nasa.png' },
-  { id: '3', title: 'Indian Railways Heritage', category: 'vintage', imageSrc: '/images/railways.png' },
-  { id: '4', title: 'NAETC Visual Concept', category: 'editorial', imageSrc: '/images/naetc.png' },
-  { id: '5', title: 'Prompt Engineering Poster 1', category: 'typographic', imageSrc: '/images/poster1.png' },
-  { id: '6', title: 'Storyboarding Concept 2', category: 'typographic', imageSrc: '/images/poster2.png' },
+  { id: '1', title: 'Indian Railways Heritage', category: 'vintage', imageSrc: '/images/railways.png' },
+  { id: '2', title: 'Prompt Engineering Poster 1', category: 'typographic', imageSrc: '/images/poster1.png' },
+  { id: '3', title: 'Concept Poster 2', category: 'concept', imageSrc: '/images/poster2.jpg' },
+  { id: '4', title: 'Concept Poster 3', category: 'concept', imageSrc: '/images/poster3.jpg' },
+  { id: '5', title: 'Concept Poster 4', category: 'concept', imageSrc: '/images/poster4.jpg' },
+  { id: '6', title: 'Concept Poster 5', category: 'concept', imageSrc: '/images/poster5.jpg' },
+  { id: '7', title: 'Concept Poster 6', category: 'concept', imageSrc: '/images/poster6.jpg' },
+  { id: '8', title: 'Concept Poster 7', category: 'concept', imageSrc: '/images/poster7.jpg' },
+  { id: '9', title: 'Concept Poster 8', category: 'concept', imageSrc: '/images/poster8.jpg' },
+  { id: '10', title: 'Concept Poster 9', category: 'concept', imageSrc: '/images/poster9.jpg' },
+  { id: '11', title: 'Concept Poster 10', category: 'concept', imageSrc: '/images/poster10.jpg' },
+  { id: '12', title: 'Concept Poster 11', category: 'concept', imageSrc: '/images/poster11.jpg' },
+  { id: '13', title: 'Concept Poster 12', category: 'concept', imageSrc: '/images/poster12.jpg' },
 ];
