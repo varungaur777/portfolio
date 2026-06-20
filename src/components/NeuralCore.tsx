@@ -39,7 +39,7 @@ export default function NeuralCore() {
 
   return (
     <mesh ref={meshRef} scale={1.8}>
-      <sphereGeometry args={[1, 64, 64]} />
+      <sphereGeometry args={[1, 32, 32]} />
       {/* MeshDistortMaterial creates a fluid, organic distortion effect */}
       <MeshDistortMaterial
         ref={materialRef}

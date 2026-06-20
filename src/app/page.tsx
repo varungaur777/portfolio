@@ -57,6 +57,20 @@ function StatsCounter({ value, label }: { value: string; label: string }) {
 export default function Home() {
   const [loaded, setLoaded] = useState(false);
   const [filter, setFilter] = useState<'all' | 'commercial' | 'storytelling'>('all');
+  const [showWebGL, setShowWebGL] = useState(true);
+
+  // Stop rendering WebGL canvas when scrolled out of hero view to boost page performance
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 850) {
+        setShowWebGL(false);
+      } else {
+        setShowWebGL(true);
+      }
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
   
   // Lightbox Modal state
   const [lightboxOpen, setLightboxOpen] = useState(false);
@@ -109,8 +123,8 @@ export default function Home() {
       {/* Preloading Screen */}
       <Preloader onComplete={() => setLoaded(true)} />
 
-      {/* WebGL background loaded dynamically only on the homepage */}
-      <WebGLBackground />
+      {/* WebGL background loaded dynamically only on the homepage when in view */}
+      {showWebGL && <WebGLBackground />}
 
       {/* Main content displays stagger-reveal once preload resolves */}
       <AnimatePresence>
