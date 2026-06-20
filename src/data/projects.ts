@@ -63,30 +63,36 @@ export const projects: Project[] = [
     }
   },
   {
-    slug: 'new-ladakh-model',
-    title: 'The New Ladakh Model',
-    subtitle: 'HUD & Geopolitical Explainer',
+    slug: 'kaal-bhairav',
+    title: 'Kaal Bhairav — Kashi',
+    subtitle: 'Cinematic Visual Exploration',
     category: 'storytelling',
-    description: 'Motion graphics, geospatial explainer systems, and interactive information dashboards designed for high-profile digital journalism covering regional geopolitics and military dynamics.',
-    videoSrc: 'videos/ladakh.mp4',
-    fullVideoSrc: 'videos/ladakh.mp4',
-    tags: ['Explainer Video', 'Motion Design', 'Canva', 'HUD Map'],
-    aspect: 'landscape',
+    description: 'A breathtaking cultural visual journey through Varanasi/Kashi, exploring the divine energy of Kaal Bhairav. Developed using advanced generative AI prompts and deep cultural motifs.',
+    videoSrc: 'videos/kashi1.mp4.mp4',
+    fullVideoSrc: 'videos/VarunGaur_Kaalhairav_reel.mp4.mp4',
+    driveLink: 'https://drive.google.com/file/d/1DeslFGFF00MsmBrw0aKSaaVgDDN6jDsr/view?usp=drive_link',
+    tags: ['Cinematic AI', 'Cultural Storytelling', 'Kling AI', 'Varanasi'],
+    aspect: 'portrait',
     details: {
-      role: 'Lead Motion Designer & Editor',
-      tools: ['Canva', 'CapCut', 'After Effects', 'Mapbox'],
-      duration: '2 Weeks',
-      overview: 'Designed a highly informative visual explainer detailing the geographic, strategic, and geopolitical shifts in the Ladakh region. The focus was to present high-density map details, infrastructure overlays, and satellite analysis in an easy-to-digest documentary format.',
+      role: 'Creative Visualizer & Director',
+      tools: ['Kling AI', 'Midjourney', 'Stable Diffusion', 'Canva'],
+      duration: '3 Weeks',
+      overview: 'A deep-dive artistic project aiming to represent the ancient city of Varanasi and the mysticism of Kaal Bhairav. Fusing traditional Indian aesthetics with high-end sci-fi-infused cinematic rendering.',
       promptBreakdown: [
         {
-          title: 'Mapping HUDs',
-          prompt: 'Dynamic 3D terrain map of Ladakh, glowing borderlines, satellite imagery overlays, tactical HUD details, clean minimal corporate infographic design, high-tech map UI',
-          explanation: 'Created clean, highly visible map graphics suitable for editorial news presentation.'
+          title: 'Ancient Varanasi',
+          prompt: 'Cinematic wide angle, ancient temples on the banks of Varanasi during sunset, golden hour light reflecting off the sacred Ganges river, hundreds of floating oil lamps, cinematic smoke, hyper-detailed, spiritual aura --ar 16:9',
+          explanation: 'Captured the essence of the ghats during sunset using volumetric lighting and smoke simulations.'
+        },
+        {
+          title: 'Divine Energy Reveal',
+          prompt: 'Cinematic close-up of a mystical guardian representing Kaal Bhairav, third eye glowing with fiery orange light, ash smears on face, traditional red and black markings, dynamic wind blowing hair, high-contrast chiaroscuro lighting --ar 16:9',
+          explanation: 'Established high-contrast spiritual aesthetics and fine skin/ash details.'
         }
       ],
       storyboard: [
-        'images/naetc.png',
-        'images/poster1.png'
+        'images/poster1.png',
+        'images/poster2.png'
       ]
     }
   },
@@ -125,36 +131,30 @@ export const projects: Project[] = [
     }
   },
   {
-    slug: 'kaal-bhairav',
-    title: 'Kaal Bhairav — Kashi',
-    subtitle: 'Cinematic Visual Exploration',
+    slug: 'new-ladakh-model',
+    title: 'The New Ladakh Model',
+    subtitle: 'HUD & Geopolitical Explainer',
     category: 'storytelling',
-    description: 'A breathtaking cultural visual journey through Varanasi/Kashi, exploring the divine energy of Kaal Bhairav. Developed using advanced generative AI prompts and deep cultural motifs.',
-    videoSrc: 'videos/kashi1.mp4.mp4',
-    fullVideoSrc: 'videos/VarunGaur_Kaalhairav_reel.mp4.mp4',
-    driveLink: 'https://drive.google.com/file/d/1DeslFGFF00MsmBrw0aKSaaVgDDN6jDsr/view?usp=drive_link',
-    tags: ['Cinematic AI', 'Cultural Storytelling', 'Kling AI', 'Varanasi'],
-    aspect: 'portrait',
+    description: 'Motion graphics, geospatial explainer systems, and interactive information dashboards designed for high-profile digital journalism covering regional geopolitics and military dynamics.',
+    videoSrc: 'videos/ladakh.mp4',
+    fullVideoSrc: 'videos/ladakh.mp4',
+    tags: ['Explainer Video', 'Motion Design', 'Canva', 'HUD Map'],
+    aspect: 'landscape',
     details: {
-      role: 'Creative Visualizer & Director',
-      tools: ['Kling AI', 'Midjourney', 'Stable Diffusion', 'Canva'],
-      duration: '3 Weeks',
-      overview: 'A deep-dive artistic project aiming to represent the ancient city of Varanasi and the mysticism of Kaal Bhairav. Fusing traditional Indian aesthetics with high-end sci-fi-infused cinematic rendering.',
+      role: 'Lead Motion Designer & Editor',
+      tools: ['Canva', 'CapCut', 'After Effects', 'Mapbox'],
+      duration: '2 Weeks',
+      overview: 'Designed a highly informative visual explainer detailing the geographic, strategic, and geopolitical shifts in the Ladakh region. The focus was to present high-density map details, infrastructure overlays, and satellite analysis in an easy-to-digest documentary format.',
       promptBreakdown: [
         {
-          title: 'Ancient Varanasi',
-          prompt: 'Cinematic wide angle, ancient temples on the banks of Varanasi during sunset, golden hour light reflecting off the sacred Ganges river, hundreds of floating oil lamps, cinematic smoke, hyper-detailed, spiritual aura --ar 16:9',
-          explanation: 'Captured the essence of the ghats during sunset using volumetric lighting and smoke simulations.'
-        },
-        {
-          title: 'Divine Energy Reveal',
-          prompt: 'Cinematic close-up of a mystical guardian representing Kaal Bhairav, third eye glowing with fiery orange light, ash smears on face, traditional red and black markings, dynamic wind blowing hair, high-contrast chiaroscuro lighting --ar 16:9',
-          explanation: 'Established high-contrast spiritual aesthetics and fine skin/ash details.'
+          title: 'Mapping HUDs',
+          prompt: 'Dynamic 3D terrain map of Ladakh, glowing borderlines, satellite imagery overlays, tactical HUD details, clean minimal corporate infographic design, high-tech map UI',
+          explanation: 'Created clean, highly visible map graphics suitable for editorial news presentation.'
         }
       ],
       storyboard: [
-        'images/poster1.png',
-        'images/poster2.png'
+        'images/naetc.png',
+        'images/poster1.png'
       ]
     }
   },
