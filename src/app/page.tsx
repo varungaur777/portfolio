@@ -294,7 +294,7 @@ export default function Home() {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-4">
                 {filteredProjects.map((project) => {
                   // Make Kaal Bhairav, Titanfall, and The Order larger bento cards (col-span-2)
-                  const isLarge = project.slug === 'titan-clash' || project.slug === 'the-order' || project.slug === 'kaal-bhairav';
+                  const isLarge = project.slug === 'titan-clash' || project.slug === 'the-order' || project.slug === 'kaal-bhairav' || project.slug === 'new-ladakh-model';
                   return (
                     <ProjectCard
                       key={project.slug}
