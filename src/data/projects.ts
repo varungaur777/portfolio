@@ -18,6 +18,7 @@ export interface Project {
   driveLink?: string;
   tags: string[];
   details: ProjectDetails;
+  aspect: 'landscape' | 'portrait';
 }
 
 export const projects: Project[] = [
@@ -31,6 +32,7 @@ export const projects: Project[] = [
     fullVideoSrc: 'videos/titan-clash.mp4',
     driveLink: 'https://drive.google.com/file/d/1hmA-o8mDNyzsM_-8Ih-Q2HREmGqyNvKM/view?usp=sharing',
     tags: ['Kling AI', 'VFX', 'Cinematic AI', '3D Scale'],
+    aspect: 'landscape',
     details: {
       role: 'AI Visual Engineer & Creative Director',
       tools: ['Kling AI', 'Luma Dream Machine', 'CapCut', 'Topaz Video AI'],
@@ -69,6 +71,7 @@ export const projects: Project[] = [
     videoSrc: 'videos/ladakh.mp4',
     fullVideoSrc: 'videos/ladakh.mp4',
     tags: ['Explainer Video', 'Motion Design', 'Canva', 'HUD Map'],
+    aspect: 'landscape',
     details: {
       role: 'Lead Motion Designer & Editor',
       tools: ['Canva', 'CapCut', 'After Effects', 'Mapbox'],
@@ -97,6 +100,7 @@ export const projects: Project[] = [
     fullVideoSrc: 'videos/the-order.mp4',
     driveLink: 'https://drive.google.com/file/d/1QdHfLfOM9P27specZkviMKcz7zdpgq8T/view?usp=sharing',
     tags: ['Brand Strategy', 'Commercial', 'ChatGPT', 'AI Visuals'],
+    aspect: 'landscape',
     details: {
       role: 'Creative Director & AI Specialist',
       tools: ['ChatGPT', 'Midjourney', 'Kling AI', 'Premiere Pro'],
@@ -130,6 +134,7 @@ export const projects: Project[] = [
     fullVideoSrc: 'videos/VarunGaur_Kaalhairav_reel.mp4.mp4',
     driveLink: 'https://drive.google.com/file/d/1DeslFGFF00MsmBrw0aKSaaVgDDN6jDsr/view?usp=drive_link',
     tags: ['Cinematic AI', 'Cultural Storytelling', 'Kling AI', 'Varanasi'],
+    aspect: 'portrait',
     details: {
       role: 'Creative Visualizer & Director',
       tools: ['Kling AI', 'Midjourney', 'Stable Diffusion', 'Canva'],
@@ -163,6 +168,7 @@ export const projects: Project[] = [
     fullVideoSrc: 'videos/eastem.mp4',
     driveLink: 'https://drive.google.com/file/d/1WLpY1Vyb4AgUncxZFtUemXDMonKXqpVe/view?usp=drive_link',
     tags: ['Commercial', 'Vertical Format', 'AI Video', 'Product Motion'],
+    aspect: 'portrait',
     details: {
       role: 'AI Editor & Motion Specialist',
       tools: ['Kling AI', 'CapCut', 'Photoshop'],
@@ -191,6 +197,7 @@ export const projects: Project[] = [
     fullVideoSrc: 'videos/foam-wash.mp4',
     driveLink: 'https://drive.google.com/file/d/1e-uSggAd3hU91EiUcfyYZtKRWJIV-j1R/view?usp=drive_link',
     tags: ['Skincare Brand', 'Fluid Simulation', 'Kling AI', 'Product Design'],
+    aspect: 'portrait',
     details: {
       role: 'Commercial Visualizer',
       tools: ['Kling AI', 'Midjourney', 'Topaz Video AI'],
@@ -219,6 +226,7 @@ export const projects: Project[] = [
     fullVideoSrc: 'videos/T-shirt.mp4',
     driveLink: 'https://drive.google.com/file/d/13zaIHF_R3LaUGnszT91NprsLRvKN3pWa/view?usp=drive_link',
     tags: ['Streetwear', 'Fashion Commercial', 'Generative Video', 'Aesthetic'],
+    aspect: 'portrait',
     details: {
       role: 'Visual Director',
       tools: ['Kling AI', 'Photoshop', 'CapCut'],
@@ -246,6 +254,7 @@ export const projects: Project[] = [
     videoSrc: 'videos/panda-tea.mp4',
     fullVideoSrc: 'videos/panda-tea.mp4',
     tags: ['Mascot Consistency', 'Commercial', 'Canva', 'Storytelling'],
+    aspect: 'portrait',
     details: {
       role: 'Creative Animator',
       tools: ['Midjourney', 'Kling AI', 'CapCut', 'Canva'],

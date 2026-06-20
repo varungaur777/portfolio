@@ -56,13 +56,20 @@ export default function ProjectCard({ project, className = '' }: ProjectCardProp
         className="spotlight-card h-full flex flex-col justify-between p-6 transition-all duration-500 ease-smooth hover:-translate-y-1 hover:shadow-2xl hover:shadow-cyanGlow/5"
       >
         {/* Media Container */}
-        <div className="relative w-full aspect-video rounded-xl overflow-hidden border border-obsidian-500/10 dark:border-white/5 bg-black/40">
+        <div className={
+          project.slug === 'kaal-bhairav'
+            ? "relative w-full max-w-[280px] aspect-[9/16] mx-auto rounded-xl overflow-hidden border border-obsidian-500/10 dark:border-white/5 bg-black/40"
+            : project.aspect === 'portrait'
+            ? "relative w-full aspect-[9/16] rounded-xl overflow-hidden border border-obsidian-500/10 dark:border-white/5 bg-black/40"
+            : "relative w-full aspect-video rounded-xl overflow-hidden border border-obsidian-500/10 dark:border-white/5 bg-black/40"
+        }>
           <video
             ref={videoRef}
             src={project.videoSrc}
             loop
             muted
             playsInline
+            preload="metadata"
             className="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-105"
           />
           
