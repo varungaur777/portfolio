@@ -2,6 +2,7 @@
 
 import { useState, useRef, MouseEvent, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowLeft, Cpu, Clock, Wrench, Copy, Check, ExternalLink, Terminal } from 'lucide-react';
 import { Project } from '@/data/projects';
 
@@ -210,9 +211,11 @@ export default function ProjectDetailsClient({ project }: ProjectDetailsClientPr
               key={index}
               className="relative aspect-video rounded-2xl overflow-hidden border border-obsidian-500/10 dark:border-white/5 bg-black/40 group"
             >
-              <img
+              <Image
                 src={`/${frame}`}
                 alt={`Storyboard frame ${index + 1}`}
+                width={480}
+                height={270}
                 loading="lazy"
                 className="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-103"
               />

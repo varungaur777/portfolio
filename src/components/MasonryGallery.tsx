@@ -1,8 +1,9 @@
 'use client';
 
-import { useState, useRef, MouseEvent } from 'react';
+import { useRef, MouseEvent } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Eye } from 'lucide-react';
+import Image from 'next/image';
 import { posters } from '@/data/projects';
 
 interface MasonryGalleryProps {
@@ -10,14 +11,7 @@ interface MasonryGalleryProps {
 }
 
 export default function MasonryGallery({ onSelectMedia }: MasonryGalleryProps) {
-  const [filter, setFilter] = useState('all');
   const cardRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
-
-  const categories = ['all', 'concept', 'futurism', 'vintage', 'editorial', 'typographic'];
-
-  const filteredPosters = filter === 'all'
-    ? posters
-    : posters.filter(poster => poster.category === filter);
 
   // Mouse spotlight tracker
   const handleMouseMove = (e: MouseEvent<HTMLDivElement>, id: string) => {
@@ -34,41 +28,22 @@ export default function MasonryGallery({ onSelectMedia }: MasonryGalleryProps) {
     <section id="artwork" className="w-full flex flex-col gap-8 py-16 border-t border-obsidian-500/10 dark:border-white/5">
       
       {/* Header Section */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
-        <div className="flex flex-col gap-2">
-          <div className="flex items-center gap-2">
-            <div className="w-1.5 h-1.5 rounded-full bg-cyanGlow" />
-            <span className="font-mono text-xs tracking-widest text-[#a1a1aa] uppercase">
-              Visual Design
-            </span>
-          </div>
-          <h2 className="text-3xl font-extrabold tracking-tight text-obsidian dark:text-white">
-            Concept Artwork & Posters
-          </h2>
+      <div className="flex flex-col gap-2">
+        <div className="flex items-center gap-2">
+          <div className="w-1.5 h-1.5 rounded-full bg-cyanGlow" />
+          <span className="font-mono text-xs tracking-widest text-[#a1a1aa] uppercase">
+            Visual Design
+          </span>
         </div>
-
-        {/* Filter Navigation */}
-        <div className="flex flex-wrap gap-2">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setFilter(cat)}
-              className={`px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wider capitalize transition-all duration-300 ${
-                filter === cat
-                  ? 'bg-gradient-to-r from-cyanGlow to-blueGlow text-white border-transparent shadow-md shadow-cyanGlow/25'
-                  : 'border border-obsidian-500/10 dark:border-white/5 bg-obsidian-500/5 dark:bg-white/5 text-muted hover:border-cyanGlow/40 hover:text-[#00f2fe]'
-              }`}
-            >
-              {cat}
-            </button>
-          ))}
-        </div>
+        <h2 className="text-3xl font-extrabold tracking-tight text-obsidian dark:text-white">
+          Concept Artwork & Posters
+        </h2>
       </div>
 
       {/* Masonry Columns Layout */}
       <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 [column-fill:_balance] w-full mt-4">
         <AnimatePresence mode="popLayout">
-          {filteredPosters.map((poster) => (
+          {posters.map((poster) => (
             <motion.div
               layout
               initial={{ opacity: 0, scale: 0.95 }}
@@ -86,9 +61,11 @@ export default function MasonryGallery({ onSelectMedia }: MasonryGalleryProps) {
               
               {/* Image Box */}
               <div className="relative overflow-hidden w-full rounded-t-2xl aspect-auto bg-black/10">
-                <img
+                <Image
                   src={poster.imageSrc}
                   alt={poster.title}
+                  width={600}
+                  height={800}
                   loading="lazy"
                   className="w-full h-auto object-cover transition-transform duration-700 ease-smooth group-hover:scale-102"
                 />
