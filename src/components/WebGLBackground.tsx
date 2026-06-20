@@ -1,7 +1,7 @@
 'use client';
 
 import { Canvas } from '@react-three/fiber';
-import { Environment, ContactShadows } from '@react-three/drei';
+import { ContactShadows } from '@react-three/drei';
 import { Suspense, useEffect, useState } from 'react';
 import NeuralCore from './NeuralCore';
 
@@ -18,13 +18,18 @@ export default function WebGLBackground() {
     return () => window.removeEventListener('resize', checkViewport);
   }, []);
 
+  // Completely bypass WebGL canvas rendering on mobile to save CPU/GPU overhead and prevent lag
+  if (isMobile) {
+    return <div className="fixed inset-0 w-full h-full -z-10 bg-[#050505] overflow-hidden select-none" />;
+  }
+
   return (
     <div className="fixed inset-0 w-full h-full -z-10 pointer-events-none bg-[#050505] overflow-hidden select-none">
       <Suspense fallback={null}>
         <Canvas
           camera={{ position: [0, 0, 4.5], fov: 45 }}
-          dpr={[1, isMobile ? 1 : 1.5]} // Limit pixel ratio on mobile for 60 FPS
-          gl={{ antialias: !isMobile }} // Turn off antialiasing on mobile to maintain speed
+          dpr={[1, 1.5]} // Limit pixel ratio to maintain a smooth 60 FPS
+          gl={{ antialias: true }}
         >
           {/* Subtle atmospheric ambient lighting */}
           <ambientLight intensity={0.25} />
@@ -35,7 +40,7 @@ export default function WebGLBackground() {
           <pointLight position={[0, -2, 5]} intensity={0.5} color="#4facfe" />
 
           {/* Render the core 3D mesh */}
-          {!isMobile && <NeuralCore />}
+          <NeuralCore />
 
           {/* Ground shadows underneath the sphere to lock depth perspective */}
           <ContactShadows
@@ -45,9 +50,6 @@ export default function WebGLBackground() {
             blur={2.5}
             far={4}
           />
-
-          {/* Adds subtle background reflections to metallic textures */}
-          <Environment preset="night" />
         </Canvas>
       </Suspense>
       {/* Background radial gradient overlay that blends WebGL seamlessly */}
