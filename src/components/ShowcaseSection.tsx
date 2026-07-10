@@ -31,16 +31,16 @@ export default function ShowcaseSection() {
               Featured Case Studies
             </span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">
+          <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white">
             Cinematic AI & Commercial Work
           </h2>
-          <p className="text-sm text-zinc-400 max-w-xl">
+          <p className="text-sm text-slate-600 dark:text-zinc-400 max-w-xl">
             Explore interactive breakdowns of generative directing pipelines, multi-frame CGI consistency, and high-conversion commercial productions.
           </p>
         </div>
 
         {/* Category Pills */}
-        <div className="flex items-center gap-1.5 p-1 rounded-full border border-white/[0.08] bg-[#09090b]/80 backdrop-blur-xl w-fit">
+        <div className="flex items-center gap-1.5 p-1 rounded-full border border-black/[0.08] dark:border-white/[0.08] bg-white/80 dark:bg-[#09090b]/80 backdrop-blur-xl w-fit">
           {filterTabs.map((tab) => {
             const isActive = filter === tab.id;
             return (
@@ -49,8 +49,8 @@ export default function ShowcaseSection() {
                 onClick={() => setFilter(tab.id)}
                 className={`relative px-4 py-2 text-xs font-semibold rounded-full transition-all duration-300 ${
                   isActive
-                    ? 'text-white shadow-md'
-                    : 'text-zinc-400 hover:text-white'
+                    ? 'text-slate-900 dark:text-white shadow-md'
+                    : 'text-slate-600 dark:text-zinc-400 hover:text-slate-900 dark:hover:text-white'
                 }`}
               >
                 {isActive && (

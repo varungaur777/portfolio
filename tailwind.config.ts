@@ -12,6 +12,7 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        muted: "var(--muted)",
         obsidian: {
           DEFAULT: "#050505",
           900: "#09090b",

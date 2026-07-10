@@ -2,7 +2,7 @@
 
 import { useRef, MouseEvent } from 'react';
 import { motion } from 'framer-motion';
-import { Sparkles, ArrowRight, ChevronRight, Terminal, Film, Wand2 } from 'lucide-react';
+import { ArrowRight, ChevronRight, Terminal, Film, Wand2 } from 'lucide-react';
 
 export default function HeroSection() {
   const cardRef = useRef<HTMLDivElement>(null);
@@ -54,7 +54,7 @@ export default function HeroSection() {
         variants={itemVariants}
         ref={cardRef}
         onMouseMove={handleMouseMove}
-        className="group relative grid grid-cols-1 lg:grid-cols-12 gap-8 rounded-3xl border border-white/[0.08] bg-[#09090b]/60 p-8 md:p-12 backdrop-blur-2xl shadow-2xl transition-all duration-500 hover:border-white/[0.14]"
+        className="group relative grid grid-cols-1 lg:grid-cols-12 gap-8 rounded-3xl border border-black/[0.08] dark:border-white/[0.08] bg-white/70 dark:bg-[#09090b]/60 p-8 md:p-12 backdrop-blur-2xl shadow-2xl transition-all duration-500 hover:border-black/[0.15] dark:hover:border-white/[0.14]"
       >
         {/* Spotlight Radial Hover Border Effect */}
         <div
@@ -68,15 +68,18 @@ export default function HeroSection() {
         <div className="lg:col-span-8 flex flex-col justify-center gap-6 z-10">
           {/* Availability Status Badge */}
           <div className="inline-flex items-center gap-2.5 w-fit rounded-full border border-cyanGlow/25 bg-cyanGlow/10 px-3.5 py-1.5">
-            <Sparkles className="h-3.5 w-3.5 text-cyanGlow animate-pulse" />
-            <span className="font-mono text-xs font-semibold tracking-wider text-cyanGlow uppercase">
-              Available for Commercial Campaigns & AI Directing
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyanGlow opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-cyanGlow" />
+            </span>
+            <span className="font-mono text-[10px] font-bold tracking-widest text-cyanGlow uppercase">
+              Available for Global Campaigns
             </span>
           </div>
 
           {/* Main Headline */}
           <div className="flex flex-col gap-2">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white leading-[1.05]">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.05]">
               Varun Gaur
             </h1>
             <p className="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-cyanGlow via-blueGlow to-purpleGlow">
@@ -85,7 +88,7 @@ export default function HeroSection() {
           </div>
 
           {/* Value Proposition */}
-          <p className="text-base md:text-lg leading-relaxed text-zinc-400 max-w-2xl">
+          <p className="text-base md:text-lg leading-relaxed text-slate-600 dark:text-zinc-400 max-w-2xl">
             Specializing in cinematic AI production, generative video workflows, commercial advertisements, and high-fidelity creative campaigns. I bridge the gap between creative storytelling and cutting-edge machine learning pipelines.
           </p>
 
@@ -101,7 +104,7 @@ export default function HeroSection() {
 
             <a
               href="#contact"
-              className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.04] px-7 py-3.5 text-xs font-bold tracking-wider text-white uppercase transition-all duration-300 hover:border-cyanGlow/50 hover:bg-white/[0.08] hover:text-cyanGlow"
+              className="inline-flex items-center gap-1.5 rounded-full border border-black/10 dark:border-white/10 bg-black/[0.04] dark:bg-white/[0.04] px-7 py-3.5 text-xs font-bold tracking-wider text-slate-800 dark:text-white uppercase transition-all duration-300 hover:border-cyanGlow/50 hover:bg-black/[0.08] dark:hover:bg-white/[0.08] hover:text-cyanGlow"
             >
               Let&apos;s Collaborate
               <ChevronRight className="h-4 w-4" />
@@ -110,15 +113,15 @@ export default function HeroSection() {
         </div>
 
         {/* Right Column: Execution Pipeline Card (4 Spans) */}
-        <div className="lg:col-span-4 flex flex-col justify-center gap-4 rounded-2xl border border-white/[0.06] bg-black/40 p-6 backdrop-blur-md z-10">
-          <div className="flex items-center justify-between border-b border-white/[0.08] pb-3.5">
+        <div className="lg:col-span-4 flex flex-col justify-center gap-4 rounded-2xl border border-black/[0.08] dark:border-white/[0.06] bg-slate-100/80 dark:bg-black/40 p-6 backdrop-blur-md z-10">
+          <div className="flex items-center justify-between border-b border-black/[0.08] dark:border-white/[0.08] pb-3.5">
             <div className="flex items-center gap-2">
               <Terminal className="h-4 w-4 text-cyanGlow" />
-              <span className="font-mono text-[11px] font-bold tracking-widest text-zinc-400 uppercase">
+              <span className="font-mono text-[11px] font-bold tracking-widest text-slate-600 dark:text-zinc-400 uppercase">
                 Creative Pipeline
               </span>
             </div>
-            <span className="font-mono text-[10px] text-zinc-500">v2.4 AI</span>
+            <span className="font-mono text-[10px] text-slate-500 dark:text-zinc-500">v2.4 AI</span>
           </div>
 
           <div className="flex flex-col gap-4">
@@ -127,10 +130,10 @@ export default function HeroSection() {
                 <Film className="h-3.5 w-3.5" />
               </div>
               <div>
-                <h4 className="text-xs font-bold text-white uppercase tracking-wider">
+                <h4 className="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider">
                   Generative Directing
                 </h4>
-                <p className="mt-1 text-xs text-zinc-400 leading-relaxed">
+                <p className="mt-1 text-xs text-slate-600 dark:text-zinc-400 leading-relaxed">
                   Multi-frame consistency, motion control seeds, and cinematic lighting across Kling AI & Luma.
                 </p>
               </div>
@@ -141,10 +144,10 @@ export default function HeroSection() {
                 <Wand2 className="h-3.5 w-3.5" />
               </div>
               <div>
-                <h4 className="text-xs font-bold text-white uppercase tracking-wider">
+                <h4 className="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider">
                   VFX & Fluid Plating
                 </h4>
-                <p className="mt-1 text-xs text-zinc-400 leading-relaxed">
+                <p className="mt-1 text-xs text-slate-600 dark:text-zinc-400 leading-relaxed">
                   High-scale physical simulations, liquid dynamics, and post-processing color grading.
                 </p>
               </div>
@@ -152,11 +155,11 @@ export default function HeroSection() {
           </div>
 
           {/* Stack Chips */}
-          <div className="mt-2 pt-3 border-t border-white/[0.06] flex flex-wrap gap-1.5">
+          <div className="mt-2 pt-3 border-t border-black/[0.06] dark:border-white/[0.06] flex flex-wrap gap-1.5">
             {['Kling AI', 'Midjourney v6', 'Next.js 14', 'WebGL'].map((tool) => (
               <span
                 key={tool}
-                className="rounded-md border border-white/[0.06] bg-white/[0.03] px-2 py-1 font-mono text-[10px] text-zinc-400"
+                className="rounded-md border border-black/[0.06] dark:border-white/[0.06] bg-white/60 dark:bg-white/[0.03] px-2 py-1 font-mono text-[10px] text-slate-600 dark:text-zinc-400"
               >
                 {tool}
               </span>

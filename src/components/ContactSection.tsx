@@ -5,7 +5,7 @@ import { Mail, Phone, MapPin, ArrowUpRight, Sparkles, Globe } from 'lucide-react
 export default function ContactSection() {
   return (
     <section id="contact" className="relative w-full py-20">
-      <div className="relative overflow-hidden rounded-3xl border border-white/[0.1] bg-gradient-to-b from-[#09090b]/90 to-[#050505] p-8 md:p-14 backdrop-blur-2xl shadow-2xl">
+      <div className="relative overflow-hidden rounded-3xl border border-black/[0.08] dark:border-white/[0.1] bg-gradient-to-b from-white/90 to-slate-50/90 dark:from-[#09090b]/90 dark:to-[#050505] p-8 md:p-14 backdrop-blur-2xl shadow-2xl">
         {/* Glow ambient */}
         <div className="absolute -top-24 -right-24 h-72 w-72 rounded-full bg-cyanGlow/15 blur-[120px] pointer-events-none" />
         <div className="absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-purpleGlow/15 blur-[120px] pointer-events-none" />
@@ -21,11 +21,11 @@ export default function ContactSection() {
                 </span>
               </div>
 
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white leading-tight">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight">
                 Ready to create something visually extraordinary?
               </h2>
 
-              <p className="text-sm md:text-base text-zinc-400 leading-relaxed">
+              <p className="text-sm md:text-base text-slate-600 dark:text-zinc-400 leading-relaxed">
                 Whether you need cinematic AI campaigns, generative commercials, creative direction, or cutting-edge visual storytelling pipelines—let&apos;s connect.
               </p>
             </div>
@@ -42,32 +42,32 @@ export default function ContactSection() {
           </div>
 
           {/* Divider */}
-          <div className="h-px w-full bg-gradient-to-r from-transparent via-white/[0.1] to-transparent" />
+          <div className="h-px w-full bg-gradient-to-r from-transparent via-black/[0.1] dark:via-white/[0.1] to-transparent" />
 
           {/* Bottom Grid: Phone, Location, Social & Professional Links */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-2">
             {/* Phone Number */}
             <a
               href="tel:+919899380254"
-              className="flex items-center gap-3 rounded-2xl border border-white/[0.08] bg-[#09090b]/60 p-4 hover:border-cyanGlow/40 transition-all duration-300"
+              className="flex items-center gap-3 rounded-2xl border border-black/[0.08] dark:border-white/[0.08] bg-white/80 dark:bg-[#09090b]/60 p-4 hover:border-cyanGlow/40 transition-all duration-300"
             >
               <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-cyanGlow/10 text-cyanGlow">
                 <Phone className="h-4 w-4" />
               </div>
               <div className="flex flex-col">
-                <span className="text-[10px] font-mono text-zinc-500 uppercase">Direct / WhatsApp</span>
-                <span className="text-sm font-bold text-white tracking-tight">+91 9899380254</span>
+                <span className="text-[10px] font-mono text-slate-500 dark:text-zinc-500 uppercase">Direct / WhatsApp</span>
+                <span className="text-sm font-bold text-slate-900 dark:text-white tracking-tight">+91 9899380254</span>
               </div>
             </a>
 
             {/* Location */}
-            <div className="flex items-center gap-3 rounded-2xl border border-white/[0.08] bg-[#09090b]/60 p-4">
+            <div className="flex items-center gap-3 rounded-2xl border border-black/[0.08] dark:border-white/[0.08] bg-white/80 dark:bg-[#09090b]/60 p-4">
               <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-purpleGlow/10 text-purpleGlow">
                 <MapPin className="h-4 w-4" />
               </div>
               <div className="flex flex-col">
-                <span className="text-[10px] font-mono text-zinc-500 uppercase">Base Location</span>
-                <span className="text-sm font-bold text-white tracking-tight">New Delhi, India</span>
+                <span className="text-[10px] font-mono text-slate-500 dark:text-zinc-500 uppercase">Base Location</span>
+                <span className="text-sm font-bold text-slate-900 dark:text-white tracking-tight">New Delhi, India</span>
               </div>
             </div>
 
@@ -76,18 +76,18 @@ export default function ContactSection() {
               href="https://linkedin.com/in/varungaur777"
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center justify-between rounded-2xl border border-white/[0.08] bg-[#09090b]/60 p-4 hover:border-cyanGlow/40 transition-all duration-300"
+              className="group flex items-center justify-between rounded-2xl border border-black/[0.08] dark:border-white/[0.08] bg-white/80 dark:bg-[#09090b]/60 p-4 hover:border-cyanGlow/40 transition-all duration-300"
             >
               <div className="flex items-center gap-3">
                 <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blueGlow/10 text-blueGlow">
                   <Globe className="h-4 w-4" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-[10px] font-mono text-zinc-500 uppercase">Professional Profile</span>
-                  <span className="text-sm font-bold text-white tracking-tight">LinkedIn</span>
+                  <span className="text-[10px] font-mono text-slate-500 dark:text-zinc-500 uppercase">Professional Profile</span>
+                  <span className="text-sm font-bold text-slate-900 dark:text-white tracking-tight">LinkedIn</span>
                 </div>
               </div>
-              <ArrowUpRight className="h-4 w-4 text-zinc-500 group-hover:text-cyanGlow transition-colors" />
+              <ArrowUpRight className="h-4 w-4 text-slate-400 dark:text-zinc-500 group-hover:text-cyanGlow transition-colors" />
             </a>
 
             {/* GitHub */}
@@ -95,18 +95,18 @@ export default function ContactSection() {
               href="https://github.com/varungaur777"
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center justify-between rounded-2xl border border-white/[0.08] bg-[#09090b]/60 p-4 hover:border-cyanGlow/40 transition-all duration-300"
+              className="group flex items-center justify-between rounded-2xl border border-black/[0.08] dark:border-white/[0.08] bg-white/80 dark:bg-[#09090b]/60 p-4 hover:border-cyanGlow/40 transition-all duration-300"
             >
               <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/10 text-white">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-black/10 dark:bg-white/10 text-slate-900 dark:text-white">
                   <Globe className="h-4 w-4" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-[10px] font-mono text-zinc-500 uppercase">Code & Repositories</span>
-                  <span className="text-sm font-bold text-white tracking-tight">GitHub Profile</span>
+                  <span className="text-[10px] font-mono text-slate-500 dark:text-zinc-500 uppercase">Code & Repositories</span>
+                  <span className="text-sm font-bold text-slate-900 dark:text-white tracking-tight">GitHub Profile</span>
                 </div>
               </div>
-              <ArrowUpRight className="h-4 w-4 text-zinc-500 group-hover:text-cyanGlow transition-colors" />
+              <ArrowUpRight className="h-4 w-4 text-slate-400 dark:text-zinc-500 group-hover:text-cyanGlow transition-colors" />
             </a>
           </div>
         </div>

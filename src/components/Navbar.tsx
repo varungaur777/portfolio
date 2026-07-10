@@ -30,8 +30,8 @@ export default function Navbar() {
       <nav
         className={`pointer-events-auto flex items-center justify-between w-full max-w-5xl px-5 py-3 rounded-full border transition-all duration-500 ${
           scrolled
-            ? 'border-white/[0.12] bg-[#09090b]/80 backdrop-blur-2xl shadow-2xl shadow-black/40'
-            : 'border-white/[0.08] bg-[#09090b]/50 backdrop-blur-xl shadow-lg shadow-black/20'
+            ? 'border-black/[0.1] dark:border-white/[0.12] bg-white/80 dark:bg-[#09090b]/80 backdrop-blur-2xl shadow-2xl shadow-black/10 dark:shadow-black/40'
+            : 'border-black/[0.06] dark:border-white/[0.08] bg-white/60 dark:bg-[#09090b]/50 backdrop-blur-xl shadow-lg shadow-black/5 dark:shadow-black/20'
         }`}
       >
         {/* Brand / Logo */}
@@ -40,29 +40,29 @@ export default function Navbar() {
           className="flex items-center gap-2.5 group transition-transform duration-300 hover:scale-105"
         >
           <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-tr from-cyanGlow via-blueGlow to-purpleGlow p-[1px]">
-            <div className="flex h-full w-full items-center justify-center rounded-full bg-[#09090b]">
+            <div className="flex h-full w-full items-center justify-center rounded-full bg-white dark:bg-[#09090b]">
               <span className="font-mono text-xs font-black text-transparent bg-clip-text bg-gradient-to-tr from-cyanGlow to-purpleGlow">
                 VG
               </span>
             </div>
           </div>
           <div className="flex flex-col">
-            <span className="font-sans text-sm font-bold tracking-tight text-white group-hover:text-cyanGlow transition-colors duration-300">
+            <span className="font-sans text-sm font-bold tracking-tight text-slate-900 dark:text-white group-hover:text-cyanGlow transition-colors duration-300">
               Varun Gaur
             </span>
-            <span className="hidden sm:inline font-mono text-[9px] uppercase tracking-widest text-zinc-400">
+            <span className="hidden sm:inline font-mono text-[9px] uppercase tracking-widest text-slate-500 dark:text-zinc-400">
               AI Creative Director
             </span>
           </div>
         </a>
 
         {/* Center Nav Links */}
-        <div className="hidden md:flex items-center gap-1 rounded-full border border-white/[0.06] bg-white/[0.03] px-3 py-1">
+        <div className="hidden md:flex items-center gap-1 rounded-full border border-black/[0.06] dark:border-white/[0.06] bg-black/[0.03] dark:bg-white/[0.03] px-3 py-1">
           {navLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
-              className="px-3.5 py-1.5 text-xs font-semibold text-zinc-400 rounded-full hover:text-white hover:bg-white/[0.08] transition-all duration-300"
+              className="px-3.5 py-1.5 text-xs font-semibold text-slate-600 dark:text-zinc-400 rounded-full hover:text-slate-900 dark:hover:text-white hover:bg-black/[0.06] dark:hover:bg-white/[0.08] transition-all duration-300"
             >
               {link.name}
             </a>
@@ -77,7 +77,7 @@ export default function Navbar() {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
               <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
             </span>
-            <span className="font-mono text-[10px] font-semibold tracking-wider text-emerald-400 uppercase">
+            <span className="font-mono text-[10px] font-semibold tracking-wider text-emerald-600 dark:text-emerald-400 uppercase">
               Available
             </span>
           </div>
@@ -86,7 +86,7 @@ export default function Navbar() {
           {mounted && (
             <button
               onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-              className="p-2 rounded-full border border-white/10 bg-white/[0.04] text-zinc-300 hover:text-cyanGlow hover:border-cyanGlow/40 transition-all duration-300"
+              className="p-2 rounded-full border border-black/10 dark:border-white/10 bg-black/[0.04] dark:bg-white/[0.04] text-slate-700 dark:text-zinc-300 hover:text-cyanGlow hover:border-cyanGlow/40 transition-all duration-300"
               aria-label="Toggle Theme"
             >
               {theme === 'dark' ? <Sun size={15} /> : <Moon size={15} />}

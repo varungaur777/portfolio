@@ -15,7 +15,7 @@ const WebGLBackground = dynamic(() => import('@/components/WebGLBackground'), {
 
 export default function Home() {
   return (
-    <div className="relative min-h-screen bg-[#050505] text-white selection:bg-cyanGlow/30 selection:text-cyanGlow overflow-x-hidden">
+    <div className="relative min-h-screen bg-background text-foreground selection:bg-cyanGlow/30 selection:text-cyanGlow overflow-x-hidden transition-colors duration-500">
       {/* Dynamic 3D WebGL Background */}
       <WebGLBackground />
 
@@ -41,7 +41,7 @@ export default function Home() {
       </main>
 
       {/* Minimalist Glassmorphic Footer */}
-      <footer className="relative z-10 border-t border-white/[0.08] bg-[#09090b]/80 backdrop-blur-xl py-8">
+      <footer className="relative z-10 border-t border-black/[0.08] dark:border-white/[0.08] bg-white/80 dark:bg-[#09090b]/80 backdrop-blur-xl py-8 transition-colors duration-500">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-500 font-mono">
           <span>© {new Date().getFullYear()} Varun Gaur. All rights reserved.</span>
           <span className="flex items-center gap-2">

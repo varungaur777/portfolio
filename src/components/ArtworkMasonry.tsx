@@ -29,10 +29,10 @@ export default function ArtworkMasonry() {
             Visual Exploration & Concept Art
           </span>
         </div>
-        <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">
+        <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white">
           AI Concept Posters & Editorial Art
         </h2>
-        <p className="text-sm text-zinc-400 max-w-xl">
+        <p className="text-sm text-slate-600 dark:text-zinc-400 max-w-xl">
           Curated visual experiments combining prompt architecture, typography, and atmospheric lighting design.
         </p>
       </div>
@@ -47,7 +47,7 @@ export default function ArtworkMasonry() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: idx * 0.05 }}
             onClick={() => handleOpenPoster(poster)}
-            className="group relative break-inside-avoid overflow-hidden rounded-2xl border border-white/[0.08] bg-[#09090b]/60 cursor-pointer shadow-lg transition-all duration-300 hover:border-cyanGlow/40 hover:shadow-2xl hover:shadow-cyanGlow/10"
+            className="group relative break-inside-avoid overflow-hidden rounded-2xl border border-black/[0.08] dark:border-white/[0.08] bg-white/80 dark:bg-[#09090b]/60 cursor-pointer shadow-lg transition-all duration-300 hover:border-cyanGlow/40 hover:shadow-2xl hover:shadow-cyanGlow/10"
           >
             <div className="relative w-full overflow-hidden">
               <Image

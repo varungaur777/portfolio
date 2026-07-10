@@ -2,9 +2,7 @@ import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
-import FloatingNav from "@/components/FloatingNav";
 import { ThemeProvider } from "@/components/ThemeProvider";
-import Clock from "@/components/Clock";
 
 // Preload Google Font Outfit for fast, layout-shift-free loading
 const outfit = Outfit({
@@ -32,18 +30,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
-      <body className={`${outfit.variable} font-sans bg-obsidian text-foreground antialiased`}>
+      <body className={`${outfit.variable} font-sans bg-background text-foreground antialiased transition-colors duration-500`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
           {/* Global Cinematic Elements */}
           <div className="noise-overlay" />
           
           <SmoothScroll>
-            <FloatingNav />
-            <main className="relative z-10 w-full min-h-screen px-4 md:px-8 max-w-6xl mx-auto pt-24 pb-16">
-              {children}
-            </main>
+            {children}
           </SmoothScroll>
-          <Clock />
         </ThemeProvider>
       </body>
     </html>

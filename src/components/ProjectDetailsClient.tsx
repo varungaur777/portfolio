@@ -109,7 +109,7 @@ export default function ProjectDetailsClient({ project }: ProjectDetailsClientPr
           <span className="font-mono text-xs font-bold tracking-widest text-cyanGlow uppercase">
             {project.category}
           </span>
-          <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight text-obsidian dark:text-white">
+          <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white">
             {project.title}
           </h1>
           <p className="text-sm md:text-base leading-relaxed text-muted mt-2">
@@ -156,7 +156,7 @@ export default function ProjectDetailsClient({ project }: ProjectDetailsClientPr
       <section className="flex flex-col gap-6 mt-6">
         <div className="flex items-center gap-2">
           <Terminal size={15} className="text-cyanGlow" />
-          <h2 className="text-2xl font-extrabold tracking-tight text-obsidian dark:text-white">
+          <h2 className="text-2xl font-extrabold tracking-tight text-slate-900 dark:text-white">
             Prompt Engineering & Logic
           </h2>
         </div>
@@ -169,13 +169,13 @@ export default function ProjectDetailsClient({ project }: ProjectDetailsClientPr
               onMouseMove={(e) => handleMouseMove(e, index)}
               className="spotlight-card p-6 md:p-8 flex flex-col gap-4 border border-obsidian-500/10 dark:border-white/5 bg-white/70 dark:bg-[#09090b]/55"
             >
-              <h4 className="text-base font-bold text-obsidian dark:text-white flex items-center gap-2">
+              <h4 className="text-base font-bold text-slate-900 dark:text-white flex items-center gap-2">
                 <div className="h-2 w-2 rounded-full bg-cyanGlow" />
                 {item.title}
               </h4>
 
               {/* Code Box container */}
-              <div className="relative w-full p-4 rounded-xl border border-obsidian-500/10 dark:border-white/5 bg-obsidian-900/50 dark:bg-[#050505]/70 font-mono text-xs leading-relaxed text-[#c8c9cc] flex items-start gap-4">
+              <div className="relative w-full p-4 rounded-xl border border-black/10 dark:border-white/10 bg-slate-900 font-mono text-xs leading-relaxed text-slate-100 flex items-start gap-4 shadow-inner">
                 <code className="flex-grow select-all font-mono break-words text-[11px]">
                   {item.prompt}
                 </code>
@@ -191,8 +191,8 @@ export default function ProjectDetailsClient({ project }: ProjectDetailsClientPr
               </div>
 
               {/* Explanatory text */}
-              <p className="text-xs text-muted leading-relaxed">
-                <span className="font-bold text-obsidian dark:text-white">Mechanism: </span>
+              <p className="text-xs text-slate-600 dark:text-zinc-400 leading-relaxed">
+                <span className="font-bold text-slate-900 dark:text-white">Mechanism: </span>
                 {item.explanation}
               </p>
             </div>
@@ -206,7 +206,7 @@ export default function ProjectDetailsClient({ project }: ProjectDetailsClientPr
       <section className="flex flex-col gap-6 mt-6 pb-10">
         <div className="flex items-center gap-2">
           <Cpu size={15} className="text-cyanGlow" />
-          <h2 className="text-2xl font-extrabold tracking-tight text-obsidian dark:text-white">
+          <h2 className="text-2xl font-extrabold tracking-tight text-slate-900 dark:text-white">
             Storyboard & Concept Boards
           </h2>
         </div>

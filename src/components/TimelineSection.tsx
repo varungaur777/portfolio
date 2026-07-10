@@ -60,16 +60,16 @@ export default function TimelineSection() {
             Professional Experience
           </span>
         </div>
-        <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">
+        <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white">
           Career Experience & Milestones
         </h2>
-        <p className="text-sm text-zinc-400 max-w-xl">
+        <p className="text-sm text-slate-600 dark:text-zinc-400 max-w-xl">
           AI-driven content creator with 1+ year of experience across freelance and part-time roles, producing 10+ video projects and 50+ AI visuals.
         </p>
       </div>
 
       {/* Timeline List */}
-      <div className="relative border-l border-white/[0.1] ml-4 md:ml-8 pl-6 md:pl-10 space-y-12">
+      <div className="relative border-l border-black/[0.1] dark:border-white/[0.1] ml-4 md:ml-8 pl-6 md:pl-10 space-y-12">
         {timelineData.map((item, idx) => (
           <motion.div
             key={`${item.role}-${item.period}`}
@@ -80,36 +80,36 @@ export default function TimelineSection() {
             className="relative group"
           >
             {/* Timeline Dot */}
-            <span className="absolute -left-[31px] md:-left-[47px] top-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-[#09090b] border-2 border-cyanGlow group-hover:scale-125 transition-transform duration-300">
+            <span className="absolute -left-[31px] md:-left-[47px] top-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-white dark:bg-[#09090b] border-2 border-cyanGlow group-hover:scale-125 transition-transform duration-300">
               <span className="h-1.5 w-1.5 rounded-full bg-cyanGlow animate-pulse" />
             </span>
 
-            <div className="rounded-2xl border border-white/[0.08] bg-[#09090b]/60 p-6 md:p-8 backdrop-blur-xl transition-all duration-300 group-hover:border-white/[0.16] shadow-xl">
+            <div className="rounded-2xl border border-black/[0.08] dark:border-white/[0.08] bg-white/80 dark:bg-[#09090b]/60 p-6 md:p-8 backdrop-blur-xl transition-all duration-300 group-hover:border-black/[0.15] dark:group-hover:border-white/[0.16] shadow-xl">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
                 <span className="font-mono text-xs font-bold text-cyanGlow uppercase tracking-wider">
                   {item.period}
                 </span>
                 <div className="flex items-center gap-2">
-                  <span className="text-xs font-mono text-zinc-400">
+                  <span className="text-xs font-mono text-slate-600 dark:text-zinc-400">
                     {item.organization}
                   </span>
-                  <span className="rounded-full border border-white/[0.1] bg-white/[0.04] px-2.5 py-0.5 text-[10px] font-mono text-zinc-300 uppercase">
+                  <span className="rounded-full border border-black/[0.1] dark:border-white/[0.1] bg-black/[0.04] dark:bg-white/[0.04] px-2.5 py-0.5 text-[10px] font-mono text-slate-700 dark:text-zinc-300 uppercase">
                     {item.type}
                   </span>
                 </div>
               </div>
 
-              <h3 className="text-xl font-bold text-white tracking-tight">
+              <h3 className="text-xl font-bold text-slate-900 dark:text-white tracking-tight">
                 {item.role}
               </h3>
 
-              <p className="mt-2 text-sm text-zinc-400 leading-relaxed">
+              <p className="mt-2 text-sm text-slate-600 dark:text-zinc-400 leading-relaxed">
                 {item.description}
               </p>
 
-              <div className="mt-4 pt-4 border-t border-white/[0.06] space-y-2">
+              <div className="mt-4 pt-4 border-t border-black/[0.06] dark:border-white/[0.06] space-y-2">
                 {item.highlights.map((highlight) => (
-                  <div key={highlight} className="flex items-center gap-2.5 text-xs text-zinc-300">
+                  <div key={highlight} className="flex items-center gap-2.5 text-xs text-slate-700 dark:text-zinc-300">
                     <CheckCircle2 className="h-3.5 w-3.5 text-emerald-400 shrink-0" />
                     <span>{highlight}</span>
                   </div>
