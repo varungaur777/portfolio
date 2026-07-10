@@ -7,40 +7,44 @@ interface TimelineItem {
   period: string;
   role: string;
   organization: string;
+  type: string;
   description: string;
   highlights: string[];
 }
 
 const timelineData: TimelineItem[] = [
   {
-    period: '2023 — PRESENT',
-    role: 'AI Creative Director & Technologist',
-    organization: 'Independent Creative & Commercial Campaigns',
-    description: 'Directing high-impact AI generative commercials, cinematic narrative trailers, and brand campaigns using multi-modal AI and custom 3D pipelines.',
+    period: 'Nov 2025 — Present',
+    role: 'AI Graphics & Research Analyst',
+    organization: 'ISN Report (isn.report)',
+    type: 'Part-Time',
+    description: 'Produced AI-generated graphics and visual assets for an Instagram-based news and geopolitical analysis platform covering strategic affairs.',
     highlights: [
-      'Engineered Titan Clash & Kaal Bhairav cinematic AI worlds',
-      'Integrated Kling AI, Luma Dream Machine, and Midjourney v6 pipelines',
-      'Delivered commercial ads for Eastem, Ladakh Tourism & Apparel Brands',
+      'Conducted research and analysis to develop visually compelling infographics and explainer content',
+      'Maintained consistent visual identity and brand coherence across regular content output',
     ],
   },
   {
-    period: '2021 — 2023',
-    role: 'Creative Visual Director & VFX Lead',
-    organization: 'Commercial & Digital Media Production',
-    description: 'Spearheaded end-to-end visual identity, motion graphics, and post-production color grading for high-visibility client brands.',
+    period: 'Nov 2025 — Present',
+    role: 'AI Content Creator & Visual Designer',
+    organization: 'Independent / Freelance',
+    type: 'Freelance',
+    description: 'Produced 10+ AI video projects across 3 commercial concepts — brand films, product demos, and cinematic reels — totalling 50+ AI-generated visuals.',
     highlights: [
-      'Led multidisciplinary creative teams across video & print media',
-      'Developed fluid dynamic plating and visual simulation workflows',
+      'Built an end-to-end AI production pipeline using Kling AI, Runway, Midjourney, Luma Dream Machine & HeyGen',
+      'Handled complete post-production workflow: clip merging, music syncing, voiceover integration, and final cut delivery via CapCut',
+      'Demonstrated character consistency and brand continuity across multi-scene commercial productions (Panda Tea, Foam Wash, T-Shirt Campaign)',
     ],
   },
   {
-    period: '2019 — 2021',
-    role: 'Visual Journalist & Storyteller',
-    organization: 'Digital Editorial & Documentary Production',
-    description: 'Crafted compelling narrative video stories and documentary photography exploring heritage, culture, and modern lifestyle.',
+    period: 'May 2025 — Jan 2026',
+    role: 'AI Graphic Designer',
+    organization: 'RK Divine Creation',
+    type: 'Part-Time',
+    description: 'Designed AI-generated posters, promotional creatives, and social media graphics tailored to brand identity.',
     highlights: [
-      'Created award-winning Indian Railways Heritage series',
-      'Pioneered interactive storytelling formats for web & social channels',
+      'Utilized Midjourney and AI image generation tools to produce high-quality visual content for campaigns',
+      'Delivered consistent creative output across multiple promotional and marketing briefs',
     ],
   },
 ];
@@ -53,14 +57,14 @@ export default function TimelineSection() {
         <div className="flex items-center gap-2">
           <Briefcase className="h-4 w-4 text-purpleGlow" />
           <span className="font-mono text-xs font-bold tracking-widest text-purpleGlow uppercase">
-            Career Evolution
+            Professional Experience
           </span>
         </div>
         <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">
-          Creative Leadership & Milestones
+          Career Experience & Milestones
         </h2>
         <p className="text-sm text-zinc-400 max-w-xl">
-          A track record of leading visual innovation—from traditional documentary storytelling to state-of-the-art generative AI film direction.
+          AI-driven content creator with 1+ year of experience across freelance and part-time roles, producing 10+ video projects and 50+ AI visuals.
         </p>
       </div>
 
@@ -68,7 +72,7 @@ export default function TimelineSection() {
       <div className="relative border-l border-white/[0.1] ml-4 md:ml-8 pl-6 md:pl-10 space-y-12">
         {timelineData.map((item, idx) => (
           <motion.div
-            key={item.period}
+            key={`${item.role}-${item.period}`}
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: '-50px' }}
@@ -85,9 +89,14 @@ export default function TimelineSection() {
                 <span className="font-mono text-xs font-bold text-cyanGlow uppercase tracking-wider">
                   {item.period}
                 </span>
-                <span className="text-xs font-mono text-zinc-500">
-                  {item.organization}
-                </span>
+                <div className="flex items-center gap-2">
+                  <span className="text-xs font-mono text-zinc-400">
+                    {item.organization}
+                  </span>
+                  <span className="rounded-full border border-white/[0.1] bg-white/[0.04] px-2.5 py-0.5 text-[10px] font-mono text-zinc-300 uppercase">
+                    {item.type}
+                  </span>
+                </div>
               </div>
 
               <h3 className="text-xl font-bold text-white tracking-tight">
