@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft, Cpu, Clock, Wrench, Copy, Check, ExternalLink, Terminal } from 'lucide-react';
 import { Project } from '@/data/projects';
+import Navbar from '@/components/Navbar';
 
 interface ProjectDetailsClientProps {
   project: Project;
@@ -48,8 +49,13 @@ export default function ProjectDetailsClient({ project }: ProjectDetailsClientPr
     window.scrollTo({ top: 0, behavior: 'auto' });
   }, []);
 
+  const normalizedVideoSrc = project.fullVideoSrc.startsWith('/')
+    ? project.fullVideoSrc
+    : `/${project.fullVideoSrc}`;
+
   return (
-    <div className="flex flex-col gap-10 w-full relative">
+    <div className="flex flex-col gap-10 w-full relative pt-12">
+      <Navbar />
       
       {/* Back Button Navigation */}
       <div className="flex items-center justify-between w-full">
@@ -83,7 +89,7 @@ export default function ProjectDetailsClient({ project }: ProjectDetailsClientPr
           : "relative w-full aspect-video rounded-3xl overflow-hidden border border-obsidian-500/10 dark:border-white/5 bg-black shadow-2xl shadow-cyanGlow/5"
       }>
         <video
-          src={`/${project.fullVideoSrc}`}
+          src={normalizedVideoSrc}
           controls
           autoPlay
           playsInline

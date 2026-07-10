@@ -1,7 +1,8 @@
 'use client';
 
-import { useRef, MouseEvent } from 'react';
+import { useRef, useState, MouseEvent } from 'react';
 import Link from 'next/link';
+import { useInView } from 'framer-motion';
 import { Play } from 'lucide-react';
 import { Project } from '@/data/projects';
 
@@ -13,6 +14,13 @@ interface ProjectCardProps {
 export default function ProjectCard({ project, className = '' }: ProjectCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  // Intelligent Preloading: Only mount video streaming when within 200px of viewport
+  const isInView = useInView(cardRef, {
+    once: false,
+    margin: '200px 0px 200px 0px',
+  });
 
   // Mouse spotlight tracker
   const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
@@ -25,24 +33,26 @@ export default function ProjectCard({ project, className = '' }: ProjectCardProp
     card.style.setProperty('--mouse-y', `${y}px`);
   };
 
-  // Video hover controller
+  // Hover-to-Play video stream handler
   const handleMouseEnter = () => {
+    setIsPlaying(true);
     const video = videoRef.current;
     if (video) {
       video.play().catch(() => {
-        // Handle auto-play blockers gracefully
+        // Silently catch autoplay policies
       });
     }
   };
 
   const handleMouseLeave = () => {
+    setIsPlaying(false);
     const video = videoRef.current;
     if (video) {
       video.pause();
-      // Keep it simple, or reset it
-      // video.currentTime = 0;
     }
   };
+
+  const normalizedVideoSrc = project.videoSrc.startsWith('/') ? project.videoSrc : `/${project.videoSrc}`;
 
   return (
     <Link href={`/projects/${project.slug}`} className={`block group ${className}`}>
@@ -63,20 +73,28 @@ export default function ProjectCard({ project, className = '' }: ProjectCardProp
             ? "relative w-full aspect-[9/16] rounded-xl overflow-hidden border border-obsidian-500/10 dark:border-white/5 bg-black/40"
             : "relative w-full aspect-video rounded-xl overflow-hidden border border-obsidian-500/10 dark:border-white/5 bg-black/40"
         }>
-          <video
-            ref={videoRef}
-            src={project.videoSrc}
-            loop
-            muted
-            playsInline
-            preload="metadata"
-            className="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-105"
-          />
+          {/* Render Video Player only when near viewport to conserve browser memory & prevent tab crash */}
+          {isInView ? (
+            <video
+              ref={videoRef}
+              src={normalizedVideoSrc}
+              loop
+              muted
+              playsInline
+              preload="none"
+              className="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-105"
+            />
+          ) : (
+            /* Fallback placeholder while out of viewport */
+            <div className="w-full h-full bg-black/40 animate-pulse" />
+          )}
           
           {/* Visual Overlays */}
           <div className="video-overlay absolute inset-0 z-10 flex items-center justify-center pointer-events-none">
             {/* Play Button Glow */}
-            <div className="w-12 h-12 rounded-full border border-white/20 bg-black/50 backdrop-blur-md flex items-center justify-center opacity-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500 ease-smooth">
+            <div className={`w-12 h-12 rounded-full border border-white/20 bg-black/50 backdrop-blur-md flex items-center justify-center transition-all duration-500 ease-smooth ${
+              isPlaying ? 'opacity-0 scale-90' : 'opacity-0 group-hover:opacity-100 group-hover:scale-110'
+            }`}>
               <Play size={16} fill="white" className="text-white ml-0.5" />
             </div>
           </div>
