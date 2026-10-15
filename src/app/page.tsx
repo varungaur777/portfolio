@@ -1,54 +1,72 @@
-'use client';
-
-import dynamic from 'next/dynamic';
-import Navbar from '@/components/Navbar';
-import HeroSection from '@/components/HeroSection';
-import ShowcaseSection from '@/components/ShowcaseSection';
-import ArtworkMasonry from '@/components/ArtworkMasonry';
-import TimelineSection from '@/components/TimelineSection';
-import ContactSection from '@/components/ContactSection';
-
-// Dynamically import WebGL canvas so it never blocks main thread rendering
-const WebGLBackground = dynamic(() => import('@/components/WebGLBackground'), {
-  ssr: false,
-});
+import TopBar from "@/components/TopBar";
+import Hero from "@/components/Hero";
+import Marquee from "@/components/Marquee";
+import NowShowing from "@/components/NowShowing";
+import Filmography from "@/components/Filmography";
+import BehindCamera from "@/components/BehindCamera";
+import Editorial from "@/components/Editorial";
+import { CrewCredits, KeyArt, RollCredits } from "@/components/Sections";
+import { Cut } from "@/components/Motion";
+import { FEATURED_SLUG, filmography, getProject, poster, preview } from "@/data/projects";
+import { automation, editorial, keyArt, site } from "@/data/site";
+import { asset, has } from "@/lib/assets";
 
 export default function Home() {
+  const featured = getProject(FEATURED_SLUG)!;
+
+  const rows = filmography.map((p, i) => ({
+    slug: p.slug,
+    num: String(i + 1).padStart(2, "0"),
+    title: p.title,
+    runtime: p.runtime,
+    kind: p.kind,
+    preview: asset(preview(p.slug)),
+    poster: asset(poster(p.slug)),
+  }));
+
+  const editorialTiles = editorial.map((e) => ({
+    title: e.title,
+    purpose: e.purpose,
+    format: e.format,
+    full: asset(e.src),
+    preview: e.video ? asset(e.video) : undefined,
+    poster: e.poster ? asset(e.poster) : undefined,
+  }));
+
   return (
-    <div className="relative min-h-screen bg-background text-foreground selection:bg-cyanGlow/30 selection:text-cyanGlow overflow-x-hidden transition-colors duration-500">
-      {/* Dynamic 3D WebGL Background */}
-      <WebGLBackground />
+    <main>
+      <TopBar />
+      <Hero reel={asset(site.showreel)} poster={asset(site.showreelPoster)} />
+      <Marquee />
+      <NowShowing project={featured} video={asset(preview(featured.slug))} poster={asset(poster(featured.slug))} />
 
-      {/* Floating Glassmorphic Navigation */}
-      <Navbar />
+      <Cut id="filmography" ariaLabel="Filmography" className="border-t border-line">
+        <Filmography rows={rows} />
+      </Cut>
 
-      {/* Main Container */}
-      <main className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-12 pt-8 pb-24">
-        {/* Interactive Cyber-Cinematic Hero */}
-        <HeroSection />
+      <BehindCamera
+        stats={automation.stats}
+        systems={automation.systems.map((s) => ({ title: s.title, body: s.body, status: s.status, shot: asset(s.src) }))}
+      />
 
-        {/* Bento Grid Case Studies Showcase */}
-        <ShowcaseSection />
-
-        {/* Concept Art & Poster Masonry */}
-        <ArtworkMasonry />
-
-        {/* Interactive Career Timeline */}
-        <TimelineSection />
-
-        {/* High-Conversion Contact & Collaboration */}
-        <ContactSection />
-      </main>
-
-      {/* Minimalist Glassmorphic Footer */}
-      <footer className="relative z-10 border-t border-black/[0.08] dark:border-white/[0.08] bg-white/80 dark:bg-[#09090b]/80 backdrop-blur-xl py-8 transition-colors duration-500">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-500 font-mono">
-          <span>© {new Date().getFullYear()} Varun Gaur. All rights reserved.</span>
-          <span className="flex items-center gap-2">
-            Engineered with Next.js 14 App Router & Framer Motion
-          </span>
+      <Cut id="editorial" ariaLabel="Editorial" className="section-pad border-t border-line bg-ink py-24 sm:py-32">
+        <div className="mb-12 grid gap-6 sm:mb-16 md:grid-cols-2 md:items-end">
+          <div>
+            <p className="label-lg mb-4 text-ember">Editorial</p>
+            <h2 className="font-serif text-5xl leading-none text-bone sm:text-7xl">
+              Published for <span className="italic">ISN Report</span>
+            </h2>
+          </div>
+          <p className="max-w-md text-[15px] leading-relaxed text-dust md:justify-self-end">
+            Explainers, static ads and posters that turn defence, energy and policy stories into something you can read in one scroll.
+          </p>
         </div>
-      </footer>
-    </div>
+        <Editorial items={editorialTiles} />
+      </Cut>
+
+      <KeyArt posters={keyArt.map((k) => ({ title: k.title, image: asset(k.src) }))} />
+      <CrewCredits />
+      <RollCredits hasResume={has(site.resume)} />
+    </main>
   );
 }

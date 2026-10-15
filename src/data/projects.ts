@@ -1,299 +1,227 @@
-export interface ProjectDetails {
-  role: string;
-  tools: string[];
-  duration: string;
-  overview: string;
-  promptBreakdown: { title: string; prompt: string; explanation: string }[];
-  storyboard: string[];
+/**
+ * ONE data file for every film and commercial.
+ *
+ * Asset convention (put files in /public with exactly these names):
+ *   /videos/<slug>.mp4            full film (plays with sound in the player)
+ *   /videos/previews/<slug>.mp4   4–8s muted loop, ~960px, no audio (hover + hero)
+ *   /images/posters/<slug>.jpg    poster frame, 1280px on the long side
+ *   /images/process/<slug>-*.jpg  process gallery images (see `gallery` below)
+ *
+ * Any text that starts with "[FILL IN" is rendered on the site as a clearly
+ * marked placeholder. Replace it with your own words.
+ */
+
+export type Aspect = "landscape" | "portrait";
+
+export interface GalleryItem {
+  src: string;
+  caption: string;
+  kind: "Style frame" | "Reference sheet" | "Before / after";
+}
+
+export interface PromptNote {
+  /** The tool the prompt was written for. Paste the prompt exactly as written in that tool. */
+  tool: string;
+  prompt: string;
+  note?: string;
 }
 
 export interface Project {
   slug: string;
   title: string;
-  subtitle: string;
-  category: 'commercial' | 'storytelling' | 'creative';
-  description: string;
-  videoSrc: string;
-  fullVideoSrc: string;
-  driveLink?: string;
-  tags: string[];
-  details: ProjectDetails;
-  aspect: 'landscape' | 'portrait';
+  /** Optional second word, shown in italic orange (e.g. "Rust" + "Tide"). */
+  titleItalic?: string;
+  kind: "Short film" | "Commercial";
+  runtime: string; // MM:SS
+  aspect: Aspect;
+  logline: string;
+  madeWith: string;
+  tools: string[];
+  /** Optional link to the full-quality file (Drive, Vimeo, YouTube). */
+  externalLink?: string;
+  brief: string;
+  role: string;
+  challenge: string;
+  process: string;
+  gallery: GalleryItem[];
+  prompts: PromptNote[];
+  result: string;
 }
+
+const fill = (what: string) => `[FILL IN: ${what}]`;
+
+const galleryFor = (slug: string): GalleryItem[] => [
+  { src: `/images/process/${slug}-style-frame.jpg`, caption: "Style frame", kind: "Style frame" },
+  { src: `/images/process/${slug}-reference-sheet.jpg`, caption: "Character / world reference sheet", kind: "Reference sheet" },
+  { src: `/images/process/${slug}-before-after.jpg`, caption: "Raw generation vs final grade", kind: "Before / after" },
+];
+
+export const video = (slug: string) => `/videos/${slug}.mp4`;
+export const preview = (slug: string) => `/videos/previews/${slug}.mp4`;
+export const poster = (slug: string) => `/images/posters/${slug}.jpg`;
+
+/** Featured film, shown in NOW SHOWING. */
+export const FEATURED_SLUG = "rust-tide";
 
 export const projects: Project[] = [
   {
-    slug: 'titan-clash',
-    title: 'TITANFALL — Sea Titan',
-    subtitle: 'VFX & Sea Titan Scale',
-    category: 'storytelling',
-    description: 'An epic AI cinematic sequence focused on massive scale, fluid simulation, dynamic camera movements, and marine creature design. Re-imagining sci-fi titan scale using advanced generative AI pipelines.',
-    videoSrc: 'videos/titan-clash-trailer.mp4',
-    fullVideoSrc: 'videos/titan-clash.mp4',
-    driveLink: 'https://drive.google.com/file/d/1hmA-o8mDNyzsM_-8Ih-Q2HREmGqyNvKM/view?usp=sharing',
-    tags: ['Kling AI', 'VFX', 'Cinematic AI', '3D Scale'],
-    aspect: 'landscape',
-    details: {
-      role: 'AI Visual Engineer & Creative Director',
-      tools: ['Kling AI', 'Luma Dream Machine', 'CapCut', 'Topaz Video AI'],
-      duration: '4 Weeks',
-      overview: 'This project pushes the limits of modern AI video generators in handling extreme scales, complex water simulation, and camera motions. The goal was to establish a convincing narrative sequence showing a behemoth mech emerging from a stormy ocean.',
-      promptBreakdown: [
-        {
-          title: 'Scene 1: The Gathering Storm',
-          prompt: 'Wide establishing cinematic shot, a hyper-detailed massive robotic titan towering in the middle of a stormy dark blue ocean, colossal waves crashing against its metallic chassis, lightning cracking in the sky, volumetric lighting, epic scale, photorealistic --ar 16:9',
-          explanation: 'Established atmospheric density, scale parameters, and lighting to ground the giant robot in the stormy ocean landscape.'
-        },
-        {
-          title: 'Scene 2: Water Simulation',
-          prompt: 'Macro close-up, water splashing and cascading down heavy rusted dark metal plating, fluid dynamics, camera slowly panning up, depth of field, high-fidelity texture details --ar 16:9',
-          explanation: 'Captured realistic water textures on metal to convey weight and material interaction.'
-        },
-        {
-          title: 'Scene 3: The Climax Reveal',
-          prompt: 'Low angle tracking shot looking up at the glowing cyan eye of a giant sea titan robot, mist and sea spray, lens flare, slow camera shake, cinematic sound design cues visual --ar 16:9',
-          explanation: 'Focused on details like lens aberrations, scale cues (mist/spray), and focal points to maximize visual drama.'
-        }
-      ],
-      storyboard: [
-        'images/poster1.png',
-        'images/poster2.jpg',
-        'images/railways.png'
-      ]
-    }
+    slug: "rust-tide",
+    title: "Rust",
+    titleItalic: "Tide",
+    kind: "Short film",
+    runtime: "02:30",
+    aspect: "landscape",
+    logline: "One last mission for a retired mecha pilot.",
+    madeWith: "Seedance 2.5",
+    tools: ["Seedance 2.5", fill("other tools, e.g. image model, voice, edit")],
+    brief: fill("Why you made Rust Tide. Personal project or commissioned? What did it need to prove?"),
+    role: fill("What you did: writing, direction, generation, edit, sound."),
+    challenge: fill("The hardest problem. e.g. keeping the mecha and pilot consistent across 2.5 minutes."),
+    process: fill("How you built it, step by step: script, style frames, shot list, generation, edit, grade, sound."),
+    gallery: galleryFor("rust-tide"),
+    prompts: [
+      {
+        tool: "Seedance 2.5",
+        prompt: fill("paste one real shot prompt exactly as you wrote it in Seedance"),
+      },
+    ],
+    result: fill("Where it was shown and how it landed: views, festival, client response, what you learned."),
   },
   {
-    slug: 'kaal-bhairav',
-    title: 'Kaal Bhairav — Kashi',
-    subtitle: 'Cinematic Visual Exploration',
-    category: 'storytelling',
-    description: 'A breathtaking cultural visual journey through Varanasi/Kashi, exploring the divine energy of Kaal Bhairav. Developed using advanced generative AI prompts and deep cultural motifs.',
-    videoSrc: 'videos/kashi1.mp4.mp4',
-    fullVideoSrc: 'videos/VarunGaur_Kaalhairav_reel.mp4.mp4',
-    driveLink: 'https://drive.google.com/file/d/1DeslFGFF00MsmBrw0aKSaaVgDDN6jDsr/view?usp=drive_link',
-    tags: ['Cinematic AI', 'Cultural Storytelling', 'Kling AI', 'Varanasi'],
-    aspect: 'portrait',
-    details: {
-      role: 'Creative Visualizer & Director',
-      tools: ['Kling AI', 'Midjourney', 'Stable Diffusion', 'Canva'],
-      duration: '3 Weeks',
-      overview: 'A deep-dive artistic project aiming to represent the ancient city of Varanasi and the mysticism of Kaal Bhairav. Fusing traditional Indian aesthetics with high-end sci-fi-infused cinematic rendering.',
-      promptBreakdown: [
-        {
-          title: 'Ancient Varanasi',
-          prompt: 'Cinematic wide angle, ancient temples on the banks of Varanasi during sunset, golden hour light reflecting off the sacred Ganges river, hundreds of floating oil lamps, cinematic smoke, hyper-detailed, spiritual aura --ar 16:9',
-          explanation: 'Captured the essence of the ghats during sunset using volumetric lighting and smoke simulations.'
-        },
-        {
-          title: 'Divine Energy Reveal',
-          prompt: 'Cinematic close-up of a mystical guardian representing Kaal Bhairav, third eye glowing with fiery orange light, ash smears on face, traditional red and black markings, dynamic wind blowing hair, high-contrast chiaroscuro lighting --ar 16:9',
-          explanation: 'Established high-contrast spiritual aesthetics and fine skin/ash details.'
-        }
-      ],
-      storyboard: [
-        'images/poster1.png',
-        'images/poster2.jpg'
-      ]
-    }
+    slug: "vimana",
+    title: "Vimana",
+    kind: "Short film",
+    runtime: "00:40",
+    aspect: "landscape",
+    logline: fill("one-line logline for Vimana"),
+    madeWith: fill("main video model"),
+    tools: [fill("tools used on Vimana")],
+    brief: fill("The idea behind Vimana."),
+    role: fill("Your role on Vimana."),
+    challenge: fill("The hardest problem on Vimana."),
+    process: fill("How Vimana was made."),
+    gallery: galleryFor("vimana"),
+    prompts: [],
+    result: fill("Outcome."),
   },
   {
-    slug: 'the-order',
-    title: 'The Order — Cinematic Brand Film',
-    subtitle: 'Cinematic Brand Film',
-    category: 'storytelling',
-    description: 'A cinematic brand campaign detailing the path from local logistics to global reach. Demonstrates character consistency, dynamic styling, and cinematic brand narratives.',
-    videoSrc: 'videos/the-order-trailer.mp4',
-    fullVideoSrc: 'videos/the-order.mp4',
-    driveLink: 'https://drive.google.com/file/d/1QdHfLfOM9P27specZkviMKcz7zdpgq8T/view?usp=sharing',
-    tags: ['Brand Strategy', 'Storytelling', 'ChatGPT', 'AI Visuals'],
-    aspect: 'landscape',
-    details: {
-      role: 'Creative Director & AI Specialist',
-      tools: ['ChatGPT', 'Midjourney', 'Kling AI', 'Premiere Pro'],
-      duration: '3 Weeks',
-      overview: 'Created as a flagship brand film showcasing modern AI pipelines in corporate marketing. This video represents a business founder’s rise, integrating stylistic cinematography, product tracking, and pacing to create an emotional connection with the audience.',
-      promptBreakdown: [
-        {
-          title: 'Consistent Character Concept',
-          prompt: 'Medium close-up of a young visionary entrepreneur looking out of a large glass window in a futuristic high-tech logistics center, neon blue accents, soft morning light, highly detailed textures, photorealistic --ar 16:9',
-          explanation: 'Defined visual seeds and descriptions to maintain character likeness across multiple scenes.'
-        },
-        {
-          title: 'The Breakthrough',
-          prompt: 'Fast tracking cinematic dolly shot, a package moving along a high-speed automated conveyor system with glowing green telemetry overlays, micro-details, bokeh background --ar 16:9',
-          explanation: 'Broke down complex camera motions to direct generative AI engines to produce matching panning action.'
-        }
-      ],
-      storyboard: [
-        'images/poster2.jpg',
-        'images/poster3.jpg'
-      ]
-    }
+    slug: "sea-titan",
+    title: "Sea Titan",
+    kind: "Short film",
+    runtime: "01:00",
+    aspect: "landscape",
+    logline: "A storm, a drowning city, and two titans that will not stop.",
+    madeWith: fill("main video model"),
+    tools: [fill("confirm tools used on Sea Titan")],
+    externalLink: "https://drive.google.com/file/d/1hmA-o8mDNyzsM_-8Ih-Q2HREmGqyNvKM/view?usp=sharing",
+    brief: "A test of scale: could AI video hold a creature fight at city size, with water, fire and aircraft in the same frame?",
+    role: fill("Your role, e.g. writer, director, generation, edit, sound."),
+    challenge: "Selling size. Every shot needed scale cues (helicopters, searchlights, sea spray, collapsing towers) so the titans read as hundreds of metres tall.",
+    process: fill("How you planned and generated the shots, and how you kept both creatures consistent."),
+    gallery: galleryFor("sea-titan"),
+    prompts: [],
+    result: fill("Outcome."),
   },
   {
-    slug: 'new-ladakh-model',
-    title: 'The New Ladakh Model',
-    subtitle: 'HUD & Geopolitical Explainer',
-    category: 'storytelling',
-    description: 'Motion graphics, geospatial explainer systems, and interactive information dashboards designed for high-profile digital journalism covering regional geopolitics and military dynamics.',
-    videoSrc: 'videos/ladakh.mp4',
-    fullVideoSrc: 'videos/ladakh.mp4',
-    tags: ['Explainer Video', 'Motion Design', 'Canva', 'HUD Map'],
-    aspect: 'landscape',
-    details: {
-      role: 'Lead Motion Designer & Editor',
-      tools: ['Canva', 'CapCut', 'After Effects', 'Mapbox'],
-      duration: '2 Weeks',
-      overview: 'Designed a highly informative visual explainer detailing the geographic, strategic, and geopolitical shifts in the Ladakh region. The focus was to present high-density map details, infrastructure overlays, and satellite analysis in an easy-to-digest documentary format.',
-      promptBreakdown: [
-        {
-          title: 'Mapping HUDs',
-          prompt: 'Dynamic 3D terrain map of Ladakh, glowing borderlines, satellite imagery overlays, tactical HUD details, clean minimal corporate infographic design, high-tech map UI',
-          explanation: 'Created clean, highly visible map graphics suitable for editorial news presentation.'
-        }
-      ],
-      storyboard: [
-        'images/poster4.jpg',
-        'images/poster1.png'
-      ]
-    }
+    slug: "kaal-bhairav",
+    title: "Kaal Bhairav",
+    kind: "Short film",
+    runtime: "01:00",
+    aspect: "portrait",
+    logline: "A night journey through Kashi to meet its guardian.",
+    madeWith: fill("main video model (frames show a Veo watermark, confirm)"),
+    tools: [fill("confirm tools used on Kaal Bhairav")],
+    externalLink: "https://drive.google.com/file/d/1DeslFGFF00MsmBrw0aKSaaVgDDN6jDsr/view?usp=drive_link",
+    brief: "A vertical cultural film about Varanasi and Kaal Bhairav, the city's guardian deity, made to feel devotional rather than touristic.",
+    role: fill("Your role."),
+    challenge: "Portraying a deity with respect: real ghat textures, ritual detail and light, without drifting into fantasy cliché.",
+    process: fill("How you researched and built it."),
+    gallery: galleryFor("kaal-bhairav"),
+    prompts: [],
+    result: fill("Outcome."),
   },
   {
-    slug: 'eastem-commercial',
-    title: 'Eastem Commercial',
-    subtitle: 'Dynamic Brand Showcase',
-    category: 'commercial',
-    description: 'A high-energy, vertical commercial concept demonstrating product styling, dynamic motion graphics, and fast pacing tailored for digital platforms.',
-    videoSrc: 'videos/eastem.mp4',
-    fullVideoSrc: 'videos/eastem.mp4',
-    driveLink: 'https://drive.google.com/file/d/1WLpY1Vyb4AgUncxZFtUemXDMonKXqpVe/view?usp=drive_link',
-    tags: ['Commercial', 'Vertical Format', 'AI Video', 'Product Motion'],
-    aspect: 'portrait',
-    details: {
-      role: 'AI Editor & Motion Specialist',
-      tools: ['Kling AI', 'CapCut', 'Photoshop'],
-      duration: '1 Week',
-      overview: 'Created a short-form vertical commercial showcase for Eastem, exploring dynamic camera angles, seamless visual transitions, and rapid product placement.',
-      promptBreakdown: [
-        {
-          title: 'Vertical Brand Showcase',
-          prompt: 'Dynamic commercial visual, vertical 9:16 aspect ratio, modern tech lifestyle product closeup, cinematic lighting, sleek aesthetics, smooth motion',
-          explanation: 'Designed to capture attention immediately in standard mobile formats.'
-        }
-      ],
-      storyboard: [
-        'images/poster5.jpg',
-        'images/poster6.jpg'
-      ]
-    }
+    slug: "kadak-chai",
+    title: "Kadak Chai",
+    kind: "Commercial",
+    runtime: "00:30",
+    aspect: "portrait",
+    logline: fill("one-line logline for Kadak Chai"),
+    madeWith: fill("main video model"),
+    tools: [fill("tools used on Kadak Chai")],
+    brief: fill("Client, product and goal."),
+    role: fill("Your role."),
+    challenge: fill("The hardest problem."),
+    process: fill("How it was made."),
+    gallery: galleryFor("kadak-chai"),
+    prompts: [],
+    result: fill("Outcome."),
   },
   {
-    slug: 'foam-wash',
-    title: 'Foam Wash Product Campaign',
-    subtitle: 'Macro Fluid Simulation Commercial',
-    category: 'commercial',
-    description: 'A close-up product demonstration highlighting clean textures, fluid dynamics, and commercial storytelling for a premium skincare concept.',
-    videoSrc: 'videos/foam-wash.mp4',
-    fullVideoSrc: 'videos/foam-wash.mp4',
-    driveLink: 'https://drive.google.com/file/d/1e-uSggAd3hU91EiUcfyYZtKRWJIV-j1R/view?usp=drive_link',
-    tags: ['Skincare Brand', 'Fluid Simulation', 'Kling AI', 'Product Design'],
-    aspect: 'portrait',
-    details: {
-      role: 'Commercial Visualizer',
-      tools: ['Kling AI', 'Midjourney', 'Topaz Video AI'],
-      duration: '10 Days',
-      overview: 'A stylized skincare product commercial focused on rendering rich textures. The main challenge was achieving stable, high-fidelity liquid foam physics using AI rendering generators.',
-      promptBreakdown: [
-        {
-          title: 'Macro Skincare Texture',
-          prompt: 'Extreme macro shot of luxurious white foam and water bubbles slowly expanding and popping, soft studio lighting, pastel colors, ultra-high resolution --ar 16:9',
-          explanation: 'Controlled prompts to produce pristine organic physics without artifacts.'
-        }
-      ],
-      storyboard: [
-        'images/poster7.jpg',
-        'images/poster8.jpg'
-      ]
-    }
+    slug: "foam-wash",
+    title: "Foam Wash",
+    kind: "Commercial",
+    runtime: "00:20",
+    aspect: "portrait",
+    logline: "A stained car seat, one can of foam, twenty seconds.",
+    madeWith: fill("main video model"),
+    tools: [fill("confirm tools used on Foam Wash")],
+    externalLink: "https://drive.google.com/file/d/1e-uSggAd3hU91EiUcfyYZtKRWJIV-j1R/view?usp=drive_link",
+    brief: "A vertical product ad for a car-interior foam cleaner: show the problem, the product and the result fast enough for a feed.",
+    role: fill("Your role."),
+    challenge: "Making foam behave. AI video tends to smear liquids, so the spray, the lather and the clean wipe all had to look physically right.",
+    process: fill("How it was made."),
+    gallery: galleryFor("foam-wash"),
+    prompts: [],
+    result: fill("Outcome, e.g. CTR or ROAS if it ran as an ad."),
   },
   {
-    slug: 't-shirt-campaign',
-    title: 'T-Shirt Campaign',
-    subtitle: 'Streetwear Brand Identity',
-    category: 'commercial',
-    description: 'Stylized streetwear visual campaign showing cloth simulations, brand aesthetic integration, and contemporary urban cinematography.',
-    videoSrc: 'videos/T-shirt.mp4',
-    fullVideoSrc: 'videos/T-shirt.mp4',
-    driveLink: 'https://drive.google.com/file/d/13zaIHF_R3LaUGnszT91NprsLRvKN3pWa/view?usp=drive_link',
-    tags: ['Streetwear', 'Fashion Commercial', 'Generative Video', 'Aesthetic'],
-    aspect: 'portrait',
-    details: {
-      role: 'Visual Director',
-      tools: ['Kling AI', 'Photoshop', 'CapCut'],
-      duration: '10 Days',
-      overview: 'A streetwear brand showcase focused on clothing fabric details and model performance. Created using AI prompts focused on cloth dynamics and lighting.',
-      promptBreakdown: [
-        {
-          title: 'Urban Fashion Motion',
-          prompt: 'Cinematic medium shot of a model wearing a black oversized graphic t-shirt walking through a neon-lit Tokyo street at night, camera tracking backwards, rain reflections on road --ar 16:9',
-          explanation: 'Combined atmospheric lighting, scene motion, and specific garments to achieve consistency.'
-        }
-      ],
-      storyboard: [
-        'images/railways.png',
-        'images/poster9.jpg'
-      ]
-    }
+    slug: "panda-tea",
+    title: "Panda Tea",
+    kind: "Commercial",
+    runtime: "00:30",
+    aspect: "portrait",
+    logline: "A bubble-tea brand and a panda mascot that stays the same panda in every shot.",
+    madeWith: fill("main video model"),
+    tools: [fill("confirm tools used on Panda Tea")],
+    brief: "A playful vertical spot for a bubble-tea shop, carried by a mascot character.",
+    role: fill("Your role."),
+    challenge: "Character consistency: the panda's face, cap and apron had to match from shot to shot.",
+    process: fill("How you locked the mascot design and generated the shots."),
+    gallery: galleryFor("panda-tea"),
+    prompts: [],
+    result: fill("Outcome."),
   },
   {
-    slug: 'panda-tea',
-    title: 'Panda Tea Commercial',
-    subtitle: 'Character Consistency Commercial',
-    category: 'commercial',
-    description: 'An advertising campaign showcasing consistent mascot characters, commercial product styling, and playful emotional pacing.',
-    videoSrc: 'videos/panda-tea.mp4',
-    fullVideoSrc: 'videos/panda-tea.mp4',
-    tags: ['Mascot Consistency', 'Commercial', 'Canva', 'Storytelling'],
-    aspect: 'portrait',
-    details: {
-      role: 'Creative Animator',
-      tools: ['Midjourney', 'Kling AI', 'CapCut', 'Canva'],
-      duration: '12 Days',
-      overview: 'Designed a playful tea product commercial focusing on mascot creation. Maintaining the mascot\'s specific face structure across multiple scenes was the core challenge successfully solved.',
-      promptBreakdown: [
-        {
-          title: 'Panda Mascot Design',
-          prompt: 'Adorable 3D styled panda mascot wearing a small chef hat, drinking milk tea in a bright cozy wooden tea shop, soft ambient occlusion, cute, commercial render --ar 16:9',
-          explanation: 'Established styling cues and rendering seeds to lock the mascot character.'
-        }
-      ],
-      storyboard: [
-        'images/poster10.jpg',
-        'images/poster11.jpg'
-      ]
-    }
-  }
+    slug: "the-order",
+    title: "The Order",
+    kind: "Short film",
+    runtime: "01:00",
+    aspect: "landscape",
+    logline: "One seller, one long night, and the order that changes everything.",
+    madeWith: fill("main video model (frames show a Veo watermark, confirm)"),
+    tools: [fill("confirm tools used on The Order")],
+    externalLink: "https://drive.google.com/file/d/1QdHfLfOM9P27specZkviMKcz7zdpgq8T/view?usp=sharing",
+    brief: "A cinematic brand film about the life of an online seller: late nights, alerts, exhaustion, and the customer at the other end.",
+    role: fill("Your role."),
+    challenge: "Keeping one actor's face consistent across a full emotional arc, from night to sunrise.",
+    process: fill("How it was made."),
+    gallery: galleryFor("the-order"),
+    prompts: [],
+    result: fill("Outcome."),
+  },
 ];
 
-export interface PosterArt {
-  id: string;
-  title: string;
-  category: string;
-  imageSrc: string;
-}
+export const getProject = (slug: string) => projects.find((p) => p.slug === slug);
 
-export const posters: PosterArt[] = [
-  { id: '1', title: 'Indian Railways Heritage', category: 'vintage', imageSrc: '/images/railways.png' },
-  { id: '2', title: 'Prompt Engineering Poster 1', category: 'typographic', imageSrc: '/images/poster1.png' },
-  { id: '3', title: 'Concept Poster 2', category: 'concept', imageSrc: '/images/poster2.jpg' },
-  { id: '4', title: 'Concept Poster 3', category: 'concept', imageSrc: '/images/poster3.jpg' },
-  { id: '5', title: 'Concept Poster 4', category: 'concept', imageSrc: '/images/poster4.jpg' },
-  { id: '6', title: 'Concept Poster 5', category: 'concept', imageSrc: '/images/poster5.jpg' },
-  { id: '7', title: 'Concept Poster 6', category: 'concept', imageSrc: '/images/poster6.jpg' },
-  { id: '8', title: 'Concept Poster 7', category: 'concept', imageSrc: '/images/poster7.jpg' },
-  { id: '9', title: 'Concept Poster 8', category: 'concept', imageSrc: '/images/poster8.jpg' },
-  { id: '10', title: 'Concept Poster 9', category: 'concept', imageSrc: '/images/poster9.jpg' },
-  { id: '11', title: 'Concept Poster 10', category: 'concept', imageSrc: '/images/poster10.jpg' },
-  { id: '12', title: 'Concept Poster 11', category: 'concept', imageSrc: '/images/poster11.jpg' },
-  { id: '13', title: 'Concept Poster 12', category: 'concept', imageSrc: '/images/poster12.jpg' },
-];
+/** Filmography order (numbered 01–07). The featured film sits above it. */
+export const filmography = projects.filter((p) => p.slug !== FEATURED_SLUG);
+
+export const nextProject = (slug: string) => {
+  const i = projects.findIndex((p) => p.slug === slug);
+  return projects[(i + 1) % projects.length];
+};
+
+export const displayTitle = (p: Project) => (p.titleItalic ? `${p.title} ${p.titleItalic}` : p.title);
+
+export const isTodo = (s: string) => s.startsWith("[FILL IN");

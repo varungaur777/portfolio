@@ -3,199 +3,138 @@
 @tailwind utilities;
 
 :root {
-  --background: #f8fafc;
-  --foreground: #0f172a;
-  
-  --card-bg: rgba(255, 255, 255, 0.7);
-  --card-border: rgba(15, 23, 42, 0.08);
-  --card-glow: rgba(59, 130, 246, 0.1);
-  --muted: #475569;
-  
-  --bg-gradient: radial-gradient(circle at 15% 50%, rgba(59, 130, 246, 0.15), transparent 25%), 
-                 radial-gradient(circle at 85% 30%, rgba(139, 92, 246, 0.15), transparent 25%);
-  --nav-bg: rgba(255, 255, 255, 0.8);
-}
-
-.dark {
-  --background: #050505;
-  --foreground: #f4f4f5;
-  
-  --card-bg: rgba(13, 13, 14, 0.65);
-  --card-border: rgba(255, 255, 255, 0.06);
-  --card-glow: rgba(0, 242, 254, 0.15);
-  --muted: #a1a1aa;
-  
-  --bg-gradient: radial-gradient(circle at 20% 40%, rgba(0, 242, 254, 0.05), transparent 30%), 
-                 radial-gradient(circle at 80% 70%, rgba(168, 85, 247, 0.05), transparent 30%);
-  --nav-bg: rgba(5, 5, 5, 0.75);
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+  color-scheme: dark;
 }
 
 html {
-  scroll-behavior: initial; /* Lenis handles smooth scrolling */
-  overflow-x: hidden;
+  background: #070708;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  background-image: var(--bg-gradient);
-  min-height: 100vh;
+  background: #070708;
+  color: #edeae4;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
 }
 
-/* ==========================================================================
-   NOISE TEXTURE OVERLAY
-   ========================================================================== */
-.noise-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  content: "";
-  opacity: 0.015;
-  z-index: 9998;
-  pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+::selection {
+  background: #ff6a1a;
+  color: #070708;
 }
 
-/* ==========================================================================
-   LENIS SMOOTH SCROLL INTEGRATION
-   ========================================================================== */
-html.lenis,
-html.lenis body {
-  height: auto;
+:focus-visible {
+  outline: 1px solid #ff6a1a;
+  outline-offset: 3px;
 }
 
-.lenis.lenis-smooth {
-  scroll-behavior: auto !important;
+@layer components {
+  /* Mono labels, timecodes, metadata */
+  .label {
+    @apply font-mono uppercase text-[11px] leading-none tracking-label text-dust;
+  }
+  .label-lg {
+    @apply font-mono uppercase text-xs leading-none tracking-label sm:text-[13px];
+  }
+  .section-pad {
+    @apply px-4 sm:px-8 lg:px-14;
+  }
 }
 
-.lenis.lenis-smooth [data-lenis-prevent] {
-  overflow: clip;
-}
-
-.lenis.lenis-stopped {
-  overflow: hidden;
-}
-
-.lenis.lenis-scrolling iframe {
-  pointer-events: none;
-}
-
-/* ==========================================================================
-   CUSTOM SCROLLBAR
-   ========================================================================== */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--background);
-}
-
-::-webkit-scrollbar-thumb {
-  background: rgba(161, 161, 170, 0.3);
-  border-radius: 999px;
-  border: 2px solid var(--background);
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(161, 161, 170, 0.6);
-}
-
-/* ==========================================================================
-   SPOTLIGHT MOUSE GLOW EFFECT
-   ========================================================================== */
-.spotlight-card {
+/* ---------- Film texture: video areas only ---------- */
+.film-fx {
   position: relative;
-  border-radius: 1.5rem;
-  border: 1px solid var(--card-border);
-  background: var(--card-bg);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  overflow: hidden;
+  isolation: isolate;
 }
-
-.spotlight-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border-radius: 1.5rem;
-  padding: 1.5px;
-  background: radial-gradient(
-    400px circle at var(--mouse-x, 0px) var(--mouse-y, 0px),
-    rgba(0, 242, 254, 0.4),
-    transparent 40%
-  );
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.5s ease;
-  z-index: 2;
-}
-
-.spotlight-card::after {
+.film-fx::before,
+.film-fx::after {
   content: "";
   position: absolute;
   inset: 0;
-  border-radius: 1.5rem;
-  background: radial-gradient(
-    500px circle at var(--mouse-x, 0px) var(--mouse-y, 0px),
-    rgba(0, 242, 254, 0.03),
-    transparent 50%
-  );
   pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.5s ease;
-  z-index: 1;
+  z-index: 2;
+}
+/* scanlines */
+.film-fx::before {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.18) 0px,
+    rgba(0, 0, 0, 0.18) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  opacity: 0.55;
+}
+/* grain */
+.film-fx::after {
+  inset: -50%;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.9 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  opacity: 0.06;
+  animation: grain 0.9s steps(4) infinite;
 }
 
-.spotlight-card:hover::before,
-.spotlight-card:hover::after {
-  opacity: 1;
+@keyframes grain {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(-3%, 2%); }
+  50% { transform: translate(2%, -3%); }
+  75% { transform: translate(-2%, -1%); }
+  100% { transform: translate(0, 0); }
 }
 
-/* Glassmorphism custom controls */
-.glass-panel {
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+/* ---------- REC blink ---------- */
+@keyframes rec {
+  0%, 55% { opacity: 1; }
+  56%, 100% { opacity: 0.15; }
+}
+.rec-dot {
+  animation: rec 1.2s steps(1) infinite;
 }
 
-/* ScrollTrigger entries */
-.reveal-up {
-  opacity: 0;
-  transform: translateY(30px);
+/* ---------- Marquee ---------- */
+@keyframes marquee {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
+}
+.marquee-track {
+  animation: marquee 38s linear infinite;
+  will-change: transform;
 }
 
-.reveal-fade {
-  opacity: 0;
+/* ---------- Credits leader line ---------- */
+.leader {
+  flex: 1 1 auto;
+  min-width: 1.5rem;
+  border-bottom: 1px dotted #3a3936;
+  transform: translateY(-0.35em);
 }
 
-/* Custom video hover overlay transition */
-.video-overlay {
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.4) 50%, transparent 100%);
-  opacity: 0.85;
-  transition: opacity 0.4s ease;
+/* ---------- Custom cursor (desktop only) ---------- */
+@media (hover: hover) and (pointer: fine) {
+  html.has-cursor,
+  html.has-cursor a,
+  html.has-cursor button {
+    cursor: none;
+  }
 }
 
-.spotlight-card:hover .video-overlay {
-  opacity: 0.95;
+/* ---------- Placeholder stripes ---------- */
+.placeholder-bg {
+  background-color: #0c0c0e;
+  background-image: repeating-linear-gradient(
+    135deg,
+    transparent 0 14px,
+    rgba(255, 255, 255, 0.018) 14px 15px
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .film-fx::after,
+  .rec-dot,
+  .marquee-track {
+    animation: none !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
 }
